@@ -1,7 +1,6 @@
 #ifndef _MACROS__H
 #define _MACROS__H
 
-
 /**
  * @defgroup ActionCodes
  * @brief    This Group Defines the Error and the action codes used to handle the Actions. 
@@ -19,6 +18,10 @@
  * @brief This macro tells the main app that the transaction is done with no errors
  */
 #define UnRegisteredUnitFortheMeasuredQuantity 0
+/**
+ * @brief This macro tells the main app to exit from the program
+ */
+#define Exit 100
 /**
  * @}
  */
