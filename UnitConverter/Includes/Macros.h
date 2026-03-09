@@ -1,6 +1,27 @@
 #ifndef _MACROS__H
 #define _MACROS__H
 
+
+/**
+ * @defgroup ActionCodes
+ * @brief    This Group Defines the Error and the action codes used to handle the Actions. 
+ * @{ 
+ */
+/**
+ * @brief This macro tells the main.c File that there is something like transforming kilobytes to grams.
+ */
+#define Quanitity_MissMatch 255
+/**
+ * @brief This macro tells the main app that the transaction is done with no errors
+ */
+#define Transformation_Done 1
+/**
+ * @brief This macro tells the main app that the transaction is done with no errors
+ */
+#define UnRegisteredUnitFortheMeasuredQuantity 0
+/**
+ * @}
+ */
 /**
  * @defgroup MeasuredType
  * @brief   These are the macros to define every type registered of measure like: Mass,Time,...etc.
@@ -551,30 +572,30 @@
  * @note This does not mean when Divding By it you return it to Celsius.
  */
 
-#define Celsius_To_Celsius(Value) (Value) * 1
+#define Celsius_To_Celsius(Value) ((Value) * 1)
 /**
  * @brief This Macro Defines the Multiplied value to return to Celesius From Kelving.
  * @note This does not mean when Divding By it you return it to Kelvin.
  */
 
-#define Fahrenheit_To_Celsius(Value) (Value - 32) * 5. / 9.
+#define Fahrenheit_To_Celsius(Value) ((Value - 32) * 5. / 9.)
 /**
  * @brief This Macro Defines the Multiplied value to return to Celesius From Kelving.
  * @note This does not mean when Divding By it you return it to Kelvin.
  */
 
-#define Kelvin_To_Celsius(Value) Value - 273.15
+#define Kelvin_To_Celsius(Value) (Value - 273.15)
 /**
  * @brief This Macro Defines the Multiplied value to return to Fahrenheit.
  * @note This does not mean when Divding By it you return it to Fahrenheit.
  */
 
-#define Celsius_To_Fahrenheit(Value) (Value * 9. / 5.) + 32
+#define Celsius_To_Fahrenheit(Value) ((Value * 9. / 5.) + 32)
 /**
  * @brief This Macro Defines the Multiplied value to return to Kelvin.
  * @note This does not mean when Divding By it you return it to kevlin.
  */
-#define Celsius_To_Kelvin(Value) Value + 273.15
+#define Celsius_To_Kelvin(Value) (Value + 273.15)
 /**
  * @}
  */
