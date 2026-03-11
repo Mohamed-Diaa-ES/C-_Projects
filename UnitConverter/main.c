@@ -2,6 +2,8 @@
 #include "Includes/UnitConvertionImplementation/UnitConverter_Interface.h"
 #include "Includes/Macros.h"
 #include <stdio.h>
+#include <stdlib.h>
+void clearScreen();
 
 int main()
 {
@@ -10,38 +12,56 @@ int main()
     while (1)
     {
         WelcomingAndQuantityAsking(&choice);
-        TakingInputFromUser(&ToBeConverted);
+        // as the value of macros is defined to be less than choosen always by one like length is choosed at 1 but it is defined as 0
+        if ((choice - 1) == Exit)
+        {
+            clearScreen();
+            ExitProgram();
+            return 0;
+        }
 
-        switch (choice)
+        // TakingInputFromUser(&ToBeConverted);
+        //  as the value of macros is defined to be less than choosen always by one like length is choosed at 1 but it is defined as 0
+        ToBeConverted.MeasuredType = choice - 1;
+
+        switch (ToBeConverted.MeasuredType)
         {
         case Length:
 
-            LengthCoversion(&ToBeConverted);
+            // LengthCoversion(&ToBeConverted);
             break;
         case Mass:
-            MassCoversion(&ToBeConverted);
+            // MassCoversion(&ToBeConverted);
             break;
         case Volume:
-            VolumeCoversion(&ToBeConverted);
+            // VolumeCoversion(&ToBeConverted);
             break;
         case Time:
-            TimeCoversion(&ToBeConverted);
+            // TimeCoversion(&ToBeConverted);
             break;
         case Digital_Storage:
-            Digital_StorageCoversion(&ToBeConverted);
+            // Digital_StorageCoversion(&ToBeConverted);
             break;
         case Speed:
-            SpeedCoversion(&ToBeConverted);
+            // SpeedCoversion(&ToBeConverted);
             break;
         case Temprature:
-            TempratureCoversion(&ToBeConverted);
+            // TempratureCoversion(&ToBeConverted);
             break;
-        case Exit:
-            ExitProgram();
-            break;
-
         default:
+            clearScreen();
+            printf("Invalid Choice!! Try again ,please. \n");
             break;
         }
+    }
+}
+void clearScreen()
+{
+    {
+#ifdef _WIN32
+        system("cls");
+#else
+        system("clear");
+#endif
     }
 }
