@@ -1,14 +1,16 @@
 #include "MainProgram_interfaces.h"
+#include <stdio.h>
 /**
  * @fn    ChooseUnitConverted
  * @brief HelperFunction to the Function @fn TakingInputFromUser
  */
-void ChooseUnitConverted(Unit *ToBeConverted)
+uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 {
+
         switch (ToBeConverted->MeasuredType)
         {
         case Length:
-                printf("1-cm\n");
+                printf("\n1-cm\n");
                 printf("2-m\n");
                 printf("3-km\n");
                 printf("4-mi\n");
@@ -63,13 +65,18 @@ void ChooseUnitConverted(Unit *ToBeConverted)
                 break;
 
         default:
+                printf("Invalid Input Repeat Choice Please\n");
+                return 0; // false input
                 break;
         }
+        printf("Enter the Unit: ");
+        scanf("%hhd", &ToBeConverted->UnitType);
+        return 1; // True Action
 }
 
 void WelcomingAndQuantityAsking(uint8_t *Choice)
 {
-        if (Choice == 0)
+        if (*Choice == 0)
         {
                 printf("Welcome To Your UnitConverter CLI App: ");
                 printf("\nEnter The Quantity you want to measure");
@@ -87,14 +94,70 @@ void WelcomingAndQuantityAsking(uint8_t *Choice)
         printf("\n7-Temprature");
         printf("\n8-Exit.");
         printf("\nEnter Your Choice: ");
-        scanf("%hhd", &Choice);
+        scanf("%hhd", Choice);
 }
 
 void TakingInputFromUser(Unit *ToBeConverted)
 {
         printf("Enter The Value: ");
         scanf("%lf", &ToBeConverted->Value);
-        printf("Enter The Unit: \n");
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Choose The Unit From The List: ");
+                proceeding = ChooseUnitConverted(ToBeConverted);
+                //  as the value of macros is defined to be less than choosen always by one like length is choosed at 1 but it is defined as 0
+                ToBeConverted->UnitType -= 1;
+        }
+}
 
-        scanf("%lf", &ToBeConverted->UnitType);
+void ExitProgram()
+{
+        printf("Have A Nice Day!");
+}
+
+void LengthCoversion(Unit *ToBeConverted)//takes each value and convert it to other unit
+{
+        Unit SpecificationUnit;
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Choose The unit you want to convert to: ");
+                proceeding = ChooseUnitConverted(&SpecificationUnit);
+        }
+        switch (SpecificationUnit)
+        {
+        case constant expression:
+                /* code */
+                break;
+        
+        default:
+                break;
+        }
+        
+    
+}
+void MassCoversion(Unit *ToBeConverted)
+{
+    
+}
+void VolumeCoversion(Unit *ToBeConverted)
+{
+    
+}
+void TimeCoversion(Unit *ToBeConverted)
+{
+    
+}
+void Digital_StorageCoversion(Unit *ToBeConverted)
+{
+    
+}
+void SpeedCoversion(Unit *ToBeConverted)
+{
+    
+}
+void TempratureCoversion(Unit *ToBeConverted)
+{
+    
 }
