@@ -21,7 +21,7 @@
 /**
  * @brief This macro tells the main app to exit from the program
  */
-#define Exit 100
+#define Exit 7
 /**
  * @}
  */
