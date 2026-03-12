@@ -93,6 +93,7 @@ void Print_Unit(Unit *ToBePrinted)
  * @fn    ChooseUnitConverted
  * @brief HelperFunction to the Function @fn TakingInputFromUser
  */
+
 uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 {
         uint8_t proceeding=0;
@@ -305,8 +306,7 @@ void TakingInputFromUser(Unit *ToBeConverted)
         {
                 printf("Choose The Unit From The List: ");
                 proceeding = ChooseUnitConverted(ToBeConverted);
-                //  as the value of macros is defined to be less than choosen always by one like length is choosed at 1 but it is defined as 0
-                ToBeConverted->UnitType -= 1;
+
         }
 }
 
@@ -315,46 +315,227 @@ void ExitProgram()
         printf("Have A Nice Day!");
 }
 
-void LengthCoversion(Unit *ToBeConverted)//takes each value and convert it to other unit
+void LengthCoversion(Unit *ToBeConverted) // takes each value and convert it to other unit
 {
-        Unit SpecificationUnit;
+        Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
         while (!proceeding)
         {
                 printf("Choose The unit you want to convert to: ");
                 proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
-        switch (SpecificationUnit)
+        switch (SpecificationUnit.UnitType)
         {
-        case constant expression:
-                /* code */
+        case CM:
+
                 break;
-        
+        case Meters:
+
+                break;
+        case KiloMeters:
+
+                break;
+        case Miles:
+
+                break;
+        case Inches:
+
+                break;
+        case Foot:
+
+                break;
+        case Yard:
+
+                break;
+
         default:
                 break;
         }
-        
-    
 }
 void MassCoversion(Unit *ToBeConverted)
 {
-    
+        Unit SpecificationUnit = *ToBeConverted;
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Choose The unit you want to convert to: ");
+                proceeding = ChooseUnitConverted(&SpecificationUnit);
+        }
+        switch (SpecificationUnit.UnitType)
+        {
+        case CM:
+
+                break;
+        case Meters:
+
+                break;
+        case KiloMeters:
+
+                break;
+        case Miles:
+
+                break;
+        case Inches:
+
+                break;
+        case Foot:
+
+                break;
+        case Yard:
+
+                break;
+
+        default:
+                break;
+        }
 }
 void VolumeCoversion(Unit *ToBeConverted)
 {
-    
+        Unit SpecificationUnit = *ToBeConverted;
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Choose The unit you want to convert to: ");
+                proceeding = ChooseUnitConverted(&SpecificationUnit);
+        }
+        switch (SpecificationUnit.UnitType)
+        {
+        case CM:
+
+                break;
+        case Meters:
+
+                break;
+        case KiloMeters:
+
+                break;
+        case Miles:
+
+                break;
+        case Inches:
+
+                break;
+        case Foot:
+
+                break;
+        case Yard:
+
+                break;
+
+        default:
+                break;
+        }
 }
 void TimeCoversion(Unit *ToBeConverted)
 {
-    
+        Unit SpecificationUnit = *ToBeConverted;
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Choose The unit you want to convert to: ");
+                proceeding = ChooseUnitConverted(&SpecificationUnit);
+        }
+        switch (SpecificationUnit.UnitType)
+        {
+        case CM:
+
+                break;
+        case Meters:
+
+                break;
+        case KiloMeters:
+
+                break;
+        case Miles:
+
+                break;
+        case Inches:
+
+                break;
+        case Foot:
+
+                break;
+        case Yard:
+
+                break;
+
+        default:
+                break;
+        }
 }
 void Digital_StorageCoversion(Unit *ToBeConverted)
 {
-    
+        Unit SpecificationUnit = *ToBeConverted;
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Choose The unit you want to convert to: ");
+                proceeding = ChooseUnitConverted(&SpecificationUnit);
+        }
+        switch (SpecificationUnit.UnitType)
+        {
+        case CM:
+
+                break;
+        case Meters:
+
+                break;
+        case KiloMeters:
+
+                break;
+        case Miles:
+
+                break;
+        case Inches:
+
+                break;
+        case Foot:
+
+                break;
+        case Yard:
+
+                break;
+
+        default:
+                break;
+        }
 }
 void SpeedCoversion(Unit *ToBeConverted)
 {
-    
+        Unit SpecificationUnit = *ToBeConverted;
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Choose The unit you want to convert to: ");
+                proceeding = ChooseUnitConverted(&SpecificationUnit);
+        }
+        switch (SpecificationUnit.UnitType)
+        {
+        case CM:
+
+                break;
+        case Meters:
+
+                break;
+        case KiloMeters:
+
+                break;
+        case Miles:
+
+                break;
+        case Inches:
+
+                break;
+        case Foot:
+
+                break;
+        case Yard:
+
+                break;
+
+        default:
+                break;
+        }
 }
 void TempratureCoversion(Unit *ToBeConverted)
 {
