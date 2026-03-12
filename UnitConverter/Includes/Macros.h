@@ -3,8 +3,8 @@
 
 /**
  * @defgroup ActionCodes
- * @brief    This Group Defines the Error and the action codes used to handle the Actions. 
- * @{ 
+ * @brief    This Group Defines the Error and the action codes used to handle the Actions.
+ * @{
  */
 /**
  * @brief This macro tells the main.c File that there is something like transforming kilobytes to grams.
@@ -30,6 +30,10 @@
  * @brief   These are the macros to define every type registered of measure like: Mass,Time,...etc.
  * @{
  */
+/**
+ * @brief This Macro Defines the Number of the Quantities that Can be Converted by the application.
+ */
+#define ConvertableQuantitesNumber 7
 /**
  * @brief This Macro Defines the length for the Meassured Quanitiy
  */
@@ -72,6 +76,10 @@
  * @brief   These are the Macros Needed for Length Conversions
  * @{
  */
+/**
+ * @brief This Macro Defines the Number of the Units that Can be Converted by the application in the  Length.
+ */
+#define LengthUnitsNumbers 7
 /**
  * @defgroup Length Units
  * @brief   Macros to distinguish between the Length Macros
@@ -116,6 +124,31 @@
 /**
  * @}
  */
+
+/**
+ * @defgroup Length_symbols
+ * @brief   Macros to have the units in symbols
+ * @{
+ */
+
+#define CM_Symb "cm"
+
+#define Meters_Symb "m"
+
+#define KiloMeters_Symb "km"
+
+#define Miles_Symb "mi"
+
+#define Inches_Symb "in"
+
+#define Foot_Symb "F"
+
+#define Yard_Symb "yd"
+
+/**
+ * @}
+ */
+
 /**
  * @defgroup Length Conversions
  * @brief   Macros to Define transitions From Other units to Meters
@@ -170,6 +203,10 @@
  * @{
  */
 /**
+ * @brief This Macro Defines the Number of the Units that Can be Converted by the application in the  Mass.
+ */
+#define MassUnitsNumbers 6
+/**
  * @defgroup Mass Units
  * @brief   Macros to distinguish between the Mass Macros
  * @{
@@ -202,6 +239,27 @@
  * @brief This Macro Defines the Stone Unit The Mass value measured in.
  */
 #define Stone 5
+/**
+ * @}
+ */
+/**
+ * @defgroup Mass_symbols
+ * @brief   Macros to have the units in symbols
+ * @{
+ */
+
+#define Grams_Symb "g"
+
+#define KiloGrams_Symb "kg"
+
+#define Tons_Symb "t"
+
+#define Ounces_Symb "oz"
+
+#define Pound_Symb "lb"
+
+#define Stone_Symb "st"
+
 /**
  * @}
  */
@@ -254,29 +312,50 @@
  * @{
  */
 /**
+ * @brief This Macro Defines the Number of the Units that Can be Converted by the application in the  Volume.
+ */
+#define VolumeUnitsNumbers 4
+/**
  * @defgroup Volume Units
  * @brief   Macros to distinguish between the Volume Macros
  * @{
 
 /**
- * @brief This Macro Defines the MilliLiter Unit The Mass value measured in.
+ * @brief This Macro Defines the MilliLiter Unit The Volume value measured in.
  */
 
 #define MilliLiter 0
 /**
- * @brief This Macro Defines the Liter Unit The Mass value measured in.
+ * @brief This Macro Defines the Liter Unit The Volume value measured in.
  */
 
 #define Liter 1
 /**
- * @brief This Macro Defines the CubicMeter Unit The Mass value measured in.
+ * @brief This Macro Defines the CubicMeter Unit The Volume value measured in.
  */
 
 #define CubicMeter 2
 /**
- * @brief This Macro Defines the Gallon Unit The Mass value measured in.
+ * @brief This Macro Defines the Gallon Unit The Volume value measured in.
  */
 #define Gallon 3
+/**
+ * @}
+ */
+/**
+ * @defgroup Volume_symbols
+ * @brief   Macros to have the units in symbols
+ * @{
+ */
+
+#define MilliLiter_Symb "mL"
+
+#define Liter_Symb "L"
+
+#define CubicMeter_Symb "m"
+
+#define Gallon_Symb "gal"
+
 /**
  * @}
  */
@@ -317,6 +396,10 @@
  * @{
  */
 /**
+ * @brief This Macro Defines the Number of the Units that Can be Converted by the application in the  Time.
+ */
+#define TimeUnitsNumbers 6
+/**
  * @defgroup Time Units
  * @brief   Macros to distinguish between the Time Macros
  * @{
@@ -351,6 +434,25 @@
  * @brief This Macro Defines the Week Unit The Time value measured in.
  */
 #define Week 5
+/**
+ * @}
+ */
+/**
+ * @defgroup Time_symbols
+ * @brief   Macros to have the units in symbols
+ * @{
+ */
+
+#define Millisecond_Symb "ms"
+
+#define Second_Symb "s"
+
+#define Minute_Symb "min"
+
+#define Hour_Symb "h"
+#define Day_Symb "d"
+#define Week_Symb "wk"
+
 /**
  * @}
  */
@@ -401,6 +503,12 @@
  * @{
  */
 /**
+ * @brief This Macro Defines the Number of the Units that Can be Converted by the application in the length.
+  Digital_Storage
+  */
+
+#define Digital_StoragUnitsNumbers 6
+/**
  * @defgroup Digital_Storage Units
  * @brief   Macros to distinguish between the Digital_Storage Macros
  * @{
@@ -434,6 +542,25 @@
  * @brief This Macro Defines the Terabyte Unit The Digital_Storage value measured in.
  */
 #define Terabyte 5
+/**
+ * @}
+ */
+/**
+ * @defgroup Digital_Storage_symbols
+ * @brief   Macros to have the units in symbols
+ * @{
+ */
+
+#define Bit_Symb "b(bit)"
+
+#define Byte_Symb "B(Byte)"
+
+#define Kilobyte_Symb "kB"
+
+#define Megabyte_Symb "MB"
+#define Gigabyte_Symb "GB"
+#define Terabyte_Symb "TB"
+
 /**
  * @}
  */
@@ -484,6 +611,10 @@
  * @{
  */
 /**
+ * @brief This Macro Defines the Number of the Units that Can be Converted by the application in the  Speed.
+ */
+#define SpeedUnitsNumbers 3
+/**
  * @defgroup Speed Units
  * @brief   Macros to distinguish between the Speed Macros
  * @{
@@ -502,6 +633,21 @@
  * @brief This Macro Defines the Milesperhour Unit The Speed value measured in.
  */
 #define Milesperhour 2
+/**
+ * @}
+ */
+/**
+ * @defgroup Speed_symbols
+ * @brief   Macros to have the units in symbols
+ * @{
+ */
+
+#define MeterPerSec_Symb "m/s"
+
+#define KMPerHr_Symb "km/h"
+
+#define Milesperhour_Symb "mph"
+
 /**
  * @}
  */
@@ -541,6 +687,10 @@
  * @{
  */
 /**
+ * @brief This Macro Defines the Number of the Units that Can be Converted by the application in the length Temprature
+ */
+#define TempratureUnitsNumbers 3
+/**
  * @defgroup Temprature Units
  * @brief   Macros to distinguish between the Temprature Macros
  * @{
@@ -563,6 +713,18 @@
 /**
  * @}
  */
+/**
+ * @defgroup Temprature_symbols
+ * @brief   Macros to have the units in symbols
+ * @{
+ */
+
+#define Fahrenheit_Symb "F"
+
+#define Celsius_Symb "C"
+
+#define Kelvin_Symb "K"
+
 /**
  * @defgroup Temprature Conversions
  * @brief   Macros to Define transitions From Other Units to Celsius
@@ -606,5 +768,4 @@
  * @}
  */
 
- 
 #endif
