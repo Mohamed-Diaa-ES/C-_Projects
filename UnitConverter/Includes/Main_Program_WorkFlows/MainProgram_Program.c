@@ -95,7 +95,7 @@ void Print_Unit(Unit *ToBePrinted)
  */
 uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 {
-
+        uint8_t proceeding=0;
         switch (ToBeConverted->MeasuredType)
         {
         case Length:
@@ -106,50 +106,159 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 printf("5-in\n");
                 printf("6-F\n");
                 printf("7-yd\n");
+
+                while (!proceeding)
+                {
+                        
+                        
+                        printf("Enter the Unit: ");
+                        scanf("%hhd", &ToBeConverted->UnitType);
+                        if(ToBeConverted->UnitType<=LengthUnitsNumbers&&ToBeConverted->UnitType>0)
+                        {
+                                proceeding=1;
+
+                        }else
+                        {
+                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
+                        }
+                }
+
                 break;
         case Mass:
-                printf("1-g\n");
+                printf("\n1-g\n");
                 printf("2-kg\n");
                 printf("3-t\n");
                 printf("4-oz\n");
                 printf("5-lb\n");
                 printf("6-st\n");
+
+                while (!proceeding)
+                {
+                        
+                        
+                        printf("Enter the Unit: ");
+                        scanf("%hhd", &ToBeConverted->UnitType);
+                        if(ToBeConverted->UnitType<=MassUnitsNumbers&&ToBeConverted->UnitType>0)
+                        {
+                                proceeding=1;
+
+                        }else
+                        {
+                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
+                        }
+                }
                 break;
         case Volume:
-                printf("1-mL\n");
+                printf("\n1-mL\n");
                 printf("2-L\n");
                 printf("3-m^3\n");
                 printf("4-gal\n");
 
+                while (!proceeding)
+                {
+                        
+                        
+                        printf("Enter the Unit: ");
+                        scanf("%hhd", &ToBeConverted->UnitType);
+                        if(ToBeConverted->UnitType<=VolumeUnitsNumbers&&ToBeConverted->UnitType>0)
+                        {
+                                proceeding=1;
+
+                        }else
+                        {
+                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
+                        }
+                }
                 break;
         case Time:
-                printf("1-ms\n");
+                printf("\n1-ms\n");
                 printf("2-s\n");
                 printf("3-min\n");
                 printf("4-h\n");
                 printf("5-d\n");
                 printf("6-wk\n");
 
+                while (!proceeding)
+                {
+                        
+                        
+                        printf("Enter the Unit: ");
+                        scanf("%hhd", &ToBeConverted->UnitType);
+                        if(ToBeConverted->UnitType<=TimeUnitsNumbers&&ToBeConverted->UnitType>0)
+                        {
+                                proceeding=1;
+
+                        }else
+                        {
+                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
+                        }
+                }
                 break;
         case Digital_Storage:
-                printf("1-b(bit)\n");
+                printf("\n1-b(bit)\n");
                 printf("2-B(Byte)\n");
                 printf("3-kB\n");
                 printf("4-MB\n");
                 printf("5-GB\n");
                 printf("6-TB\n");
 
+                while (!proceeding)
+                {
+                        
+                        
+                        printf("Enter the Unit: ");
+                        scanf("%hhd", &ToBeConverted->UnitType);
+                        if(ToBeConverted->UnitType<=Digital_StoragUnitsNumbers&&ToBeConverted->UnitType>0)
+                        {
+                                proceeding=1;
+
+                        }else
+                        {
+                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
+                        }
+                }
                 break;
         case Speed:
-                printf("1-m/s\n");
+                printf("\n1-m/s\n");
                 printf("2-km/h\n");
                 printf("3-mph\n");
 
+                while (!proceeding)
+                {
+                        
+                        
+                        printf("Enter the Unit: ");
+                        scanf("%hhd", &ToBeConverted->UnitType);
+                        if(ToBeConverted->UnitType<=SpeedUnitsNumbers&&ToBeConverted->UnitType>0)
+                        {
+                                proceeding=1;
+
+                        }else
+                        {
+                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
+                        }
+                }
                 break;
         case Temprature:
-                printf("1-F\n");
+                printf("\n1-F\n");
                 printf("2-C\n");
                 printf("3-K\n");
+
+                while (!proceeding)
+                {
+                        
+                        
+                        printf("Enter the Unit: ");
+                        scanf("%hhd", &ToBeConverted->UnitType);
+                        if(ToBeConverted->UnitType<=TempratureUnitsNumbers&&ToBeConverted->UnitType>0)
+                        {
+                                proceeding=1;
+
+                        }else
+                        {
+                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
+                        }
+                }
 
                 break;
 
@@ -158,8 +267,9 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 return 0; // false input
                 break;
         }
-        printf("Enter the Unit: ");
-        scanf("%hhd", &ToBeConverted->UnitType);
+
+        ToBeConverted->UnitType--;
+
         return 1; // True Action
 }
 
