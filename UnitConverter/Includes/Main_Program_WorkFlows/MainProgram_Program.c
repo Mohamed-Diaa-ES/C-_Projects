@@ -539,5 +539,47 @@ void SpeedCoversion(Unit *ToBeConverted)
 }
 void TempratureCoversion(Unit *ToBeConverted)
 {
-    
+        Unit SpecificationUnit = *ToBeConverted;
+        uint8_t proceeding = 0;
+        Print_Unit(ToBeConverted);
+        while (!proceeding)
+        {
+                printf("Choose The unit you want to convert to: ");
+                proceeding = ChooseUnitConverted(&SpecificationUnit);
+        }
+        switch (SpecificationUnit.UnitType)
+        {
+        case Fahrenheit:
+                SpecificationUnit=*ToBeConverted;
+
+                ToFahrenheit(&SpecificationUnit);
+
+
+                SpecificationUnit.UnitType = Fahrenheit;
+                break;
+        case Kelvin:
+                        SpecificationUnit=*ToBeConverted;
+
+
+                ToKelvin(&SpecificationUnit);
+        
+
+                SpecificationUnit.UnitType = Kelvin;
+
+                break;
+        case Celsius:
+                        SpecificationUnit=*ToBeConverted;
+
+
+                ToCelsius(&SpecificationUnit);
+        
+
+                SpecificationUnit.UnitType = Celsius;
+
+        default:
+                break;
+        }
+
+        Print_Unit(ToBeConverted);
+        Print_Unit(&SpecificationUnit);
 }
