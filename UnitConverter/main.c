@@ -1,3 +1,4 @@
+#include "Includes/Macros.h"
 #include "Includes/Main_Program_WorkFlows/MainProgram_interfaces.h"
 #include "Includes/UnitConvertionImplementation/UnitConverter_Interface.h"
 #include "Includes/Macros.h"
@@ -21,7 +22,6 @@ int main()
         }
         //  as the value of macros is defined to be less than choosen always by one like length is choosed at 1 but it is defined as 0
         ToBeConverted.MeasuredType = choice - 1;
-
         switch (ToBeConverted.MeasuredType)
         {
         case Length:
@@ -51,7 +51,7 @@ int main()
             break;
         case Temprature:
             TakingInputFromUser(&ToBeConverted);
-            // TempratureCoversion(&ToBeConverted);
+            TempratureCoversion(&ToBeConverted);
             break;
         default:
             clearScreen();
