@@ -320,30 +320,46 @@ void LengthCoversion(Unit *ToBeConverted) // takes each value and convert it to 
         switch (SpecificationUnit.UnitType)
         {
         case CM:
+                SpecificationUnit = *ToBeConverted;
+                ToCM(&SpecificationUnit);
 
                 break;
         case Meters:
+                SpecificationUnit = *ToBeConverted;
+                ToMeters(&SpecificationUnit);
 
                 break;
         case KiloMeters:
+                SpecificationUnit = *ToBeConverted;
+                ToKiloMeters(&SpecificationUnit);
 
                 break;
         case Miles:
+                SpecificationUnit = *ToBeConverted;
+                ToMiles(&SpecificationUnit);
 
                 break;
         case Inches:
+                SpecificationUnit = *ToBeConverted;
+                ToInches(&SpecificationUnit);
 
                 break;
         case Foot:
+                SpecificationUnit = *ToBeConverted;
+                ToFoot(&SpecificationUnit);
 
                 break;
         case Yard:
+                SpecificationUnit = *ToBeConverted;
+                ToYard(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
+        Print_Unit(ToBeConverted);
+        Print_Unit(&SpecificationUnit);
 }
 void MassCoversion(Unit *ToBeConverted)
 {
@@ -356,31 +372,42 @@ void MassCoversion(Unit *ToBeConverted)
         }
         switch (SpecificationUnit.UnitType)
         {
-        case CM:
+        case Grams:
+                SpecificationUnit = *ToBeConverted;
+                ToGrams(&SpecificationUnit);
 
                 break;
-        case Meters:
+        case KiloGrams:
+                SpecificationUnit = *ToBeConverted;
+                ToKiloGrams(&SpecificationUnit);
 
                 break;
-        case KiloMeters:
+        case Tons:
+                SpecificationUnit = *ToBeConverted;
+                ToTons(&SpecificationUnit);
 
                 break;
-        case Miles:
+        case Ounces:
+                SpecificationUnit = *ToBeConverted;
+                ToOunces(&SpecificationUnit);
 
                 break;
-        case Inches:
+        case Pound:
+                SpecificationUnit = *ToBeConverted;
+                ToPound(&SpecificationUnit);
 
                 break;
-        case Foot:
-
-                break;
-        case Yard:
+        case Stone:
+                SpecificationUnit = *ToBeConverted;
+                ToStone(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
+        Print_Unit(ToBeConverted);
+        Print_Unit(&SpecificationUnit);
 }
 void VolumeCoversion(Unit *ToBeConverted)
 {
@@ -393,31 +420,32 @@ void VolumeCoversion(Unit *ToBeConverted)
         }
         switch (SpecificationUnit.UnitType)
         {
-        case CM:
+        case MilliLiter:
+                SpecificationUnit = *ToBeConverted;
+                ToMilliLiter(&SpecificationUnit);
 
                 break;
-        case Meters:
+        case Liter:
+                SpecificationUnit = *ToBeConverted;
+                ToLiter(&SpecificationUnit);
 
                 break;
-        case KiloMeters:
+        case CubicMeter:
+                SpecificationUnit = *ToBeConverted;
+                ToCubicMeter(&SpecificationUnit);
 
                 break;
-        case Miles:
-
-                break;
-        case Inches:
-
-                break;
-        case Foot:
-
-                break;
-        case Yard:
+        case Gallon:
+                SpecificationUnit = *ToBeConverted;
+                ToGallon(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
+        Print_Unit(ToBeConverted);
+        Print_Unit(&SpecificationUnit);
 }
 void TimeCoversion(Unit *ToBeConverted)
 {
@@ -430,31 +458,43 @@ void TimeCoversion(Unit *ToBeConverted)
         }
         switch (SpecificationUnit.UnitType)
         {
-        case CM:
+        case Millisecond:
+                SpecificationUnit = *ToBeConverted;
+                ToMillisecond(&SpecificationUnit);
 
                 break;
-        case Meters:
+        case Second:
+                SpecificationUnit = *ToBeConverted;
+                ToSecond(&SpecificationUnit);
 
                 break;
-        case KiloMeters:
+        case Minute:
+                SpecificationUnit = *ToBeConverted;
+                ToMinute(&SpecificationUnit);
 
                 break;
-        case Miles:
+        case Hour:
+                SpecificationUnit = *ToBeConverted;
+                ToHour(&SpecificationUnit);
 
                 break;
-        case Inches:
+        case Day:
+                SpecificationUnit = *ToBeConverted;
+                ToDay(&SpecificationUnit);
 
                 break;
-        case Foot:
-
-                break;
-        case Yard:
+        case Week:
+                SpecificationUnit = *ToBeConverted;
+                ToWeek(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
+
+        Print_Unit(ToBeConverted);
+        Print_Unit(&SpecificationUnit);
 }
 void Digital_StorageCoversion(Unit *ToBeConverted)
 {
@@ -467,31 +507,36 @@ void Digital_StorageCoversion(Unit *ToBeConverted)
         }
         switch (SpecificationUnit.UnitType)
         {
-        case CM:
-
+        case Bit:
+                SpecificationUnit = *ToBeConverted;
+                ToBit(&SpecificationUnit);
                 break;
-        case Meters:
-
+        case Byte:
+                SpecificationUnit = *ToBeConverted;
+                ToByte(&SpecificationUnit);
                 break;
-        case KiloMeters:
-
+        case Kilobyte:
+                SpecificationUnit = *ToBeConverted;
+                ToKilobyte(&SpecificationUnit);
                 break;
-        case Miles:
-
+        case Megabyte:
+                SpecificationUnit = *ToBeConverted;
+                ToMegabyte(&SpecificationUnit);
                 break;
-        case Inches:
-
+        case Gigabyte:
+                SpecificationUnit = *ToBeConverted;
+                ToGigabyte(&SpecificationUnit);
                 break;
-        case Foot:
-
-                break;
-        case Yard:
-
+        case Terabyte:
+                SpecificationUnit = *ToBeConverted;
+                ToTerabyte(&SpecificationUnit);
                 break;
 
         default:
                 break;
         }
+        Print_Unit(ToBeConverted);
+        Print_Unit(&SpecificationUnit);
 }
 void SpeedCoversion(Unit *ToBeConverted)
 {
