@@ -1,10 +1,9 @@
 #include "Includes/Macros.h"
 #include "Includes/Main_Program_WorkFlows/MainProgram_interfaces.h"
 #include "Includes/UnitConvertionImplementation/UnitConverter_Interface.h"
-#include "Includes/Macros.h"
 #include <stdio.h>
 #include <stdlib.h>
-void clearScreen();
+
 
 int main()
 {
@@ -27,27 +26,27 @@ int main()
         case Length:
 
             TakingInputFromUser(&ToBeConverted);
-            // LengthCoversion(&ToBeConverted);
+            LengthCoversion(&ToBeConverted);
             break;
         case Mass:
             TakingInputFromUser(&ToBeConverted);
-            // MassCoversion(&ToBeConverted);
+            MassCoversion(&ToBeConverted);
             break;
         case Volume:
             TakingInputFromUser(&ToBeConverted);
-            // VolumeCoversion(&ToBeConverted);
+            VolumeCoversion(&ToBeConverted);
             break;
         case Time:
             TakingInputFromUser(&ToBeConverted);
-            // TimeCoversion(&ToBeConverted);
+            TimeCoversion(&ToBeConverted);
             break;
         case Digital_Storage:
             TakingInputFromUser(&ToBeConverted);
-            // Digital_StorageCoversion(&ToBeConverted);
+            Digital_StorageCoversion(&ToBeConverted);
             break;
         case Speed:
             TakingInputFromUser(&ToBeConverted);
-            // SpeedCoversion(&ToBeConverted);
+            SpeedCoversion(&ToBeConverted);
             break;
         case Temprature:
             TakingInputFromUser(&ToBeConverted);
@@ -58,15 +57,5 @@ int main()
             printf("Invalid Choice!! Try again ,please. \n");
             break;
         }
-    }
-}
-void clearScreen()
-{
-    {
-#ifdef _WIN32
-        system("cls");
-#else
-        system("clear");
-#endif
     }
 }
