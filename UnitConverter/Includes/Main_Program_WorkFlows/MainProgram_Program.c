@@ -1,9 +1,10 @@
 #include "MainProgram_interfaces.h"
+#include <stdlib.h>
 #include <stdio.h>
 /**
  * @defgroup    UnitsSymbols
  * @brief       This group has the arrays of strings to hold the symbols of the available Quntities to be used for printing.
- * @{ 
+ * @{
  */
 /**
  * @brief This array holds all the symbols available for the Length Quantities to be used in printing for convienience.
@@ -82,7 +83,7 @@ void Print_Unit(Unit *ToBePrinted)
                 printf("%s\n", Temprature_Symbols[ToBePrinted->UnitType]);
                 break;
         default:
-                // clearScreen();
+                clearScreen();
                 printf("Invalid Type!! How did you even reach this far!!! \n");
                 return;
                 break;
@@ -96,7 +97,7 @@ void Print_Unit(Unit *ToBePrinted)
 
 uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 {
-        uint8_t proceeding=0;
+        uint8_t proceeding = 0;
         switch (ToBeConverted->MeasuredType)
         {
         case Length:
@@ -110,15 +111,14 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 
                 while (!proceeding)
                 {
-                        
-                        
+
                         printf("Enter the Unit: ");
                         scanf("%hhd", &ToBeConverted->UnitType);
-                        if(ToBeConverted->UnitType<=LengthUnitsNumbers&&ToBeConverted->UnitType>0)
+                        if (ToBeConverted->UnitType <= LengthUnitsNumbers && ToBeConverted->UnitType > 0)
                         {
-                                proceeding=1;
-
-                        }else
+                                proceeding = 1;
+                        }
+                        else
                         {
                                 printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
                         }
@@ -135,15 +135,14 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 
                 while (!proceeding)
                 {
-                        
-                        
+
                         printf("Enter the Unit: ");
                         scanf("%hhd", &ToBeConverted->UnitType);
-                        if(ToBeConverted->UnitType<=MassUnitsNumbers&&ToBeConverted->UnitType>0)
+                        if (ToBeConverted->UnitType <= MassUnitsNumbers && ToBeConverted->UnitType > 0)
                         {
-                                proceeding=1;
-
-                        }else
+                                proceeding = 1;
+                        }
+                        else
                         {
                                 printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
                         }
@@ -157,15 +156,14 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 
                 while (!proceeding)
                 {
-                        
-                        
+
                         printf("Enter the Unit: ");
                         scanf("%hhd", &ToBeConverted->UnitType);
-                        if(ToBeConverted->UnitType<=VolumeUnitsNumbers&&ToBeConverted->UnitType>0)
+                        if (ToBeConverted->UnitType <= VolumeUnitsNumbers && ToBeConverted->UnitType > 0)
                         {
-                                proceeding=1;
-
-                        }else
+                                proceeding = 1;
+                        }
+                        else
                         {
                                 printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
                         }
@@ -181,15 +179,14 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 
                 while (!proceeding)
                 {
-                        
-                        
+
                         printf("Enter the Unit: ");
                         scanf("%hhd", &ToBeConverted->UnitType);
-                        if(ToBeConverted->UnitType<=TimeUnitsNumbers&&ToBeConverted->UnitType>0)
+                        if (ToBeConverted->UnitType <= TimeUnitsNumbers && ToBeConverted->UnitType > 0)
                         {
-                                proceeding=1;
-
-                        }else
+                                proceeding = 1;
+                        }
+                        else
                         {
                                 printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
                         }
@@ -205,15 +202,14 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 
                 while (!proceeding)
                 {
-                        
-                        
+
                         printf("Enter the Unit: ");
                         scanf("%hhd", &ToBeConverted->UnitType);
-                        if(ToBeConverted->UnitType<=Digital_StoragUnitsNumbers&&ToBeConverted->UnitType>0)
+                        if (ToBeConverted->UnitType <= Digital_StoragUnitsNumbers && ToBeConverted->UnitType > 0)
                         {
-                                proceeding=1;
-
-                        }else
+                                proceeding = 1;
+                        }
+                        else
                         {
                                 printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
                         }
@@ -226,15 +222,14 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 
                 while (!proceeding)
                 {
-                        
-                        
+
                         printf("Enter the Unit: ");
                         scanf("%hhd", &ToBeConverted->UnitType);
-                        if(ToBeConverted->UnitType<=SpeedUnitsNumbers&&ToBeConverted->UnitType>0)
+                        if (ToBeConverted->UnitType <= SpeedUnitsNumbers && ToBeConverted->UnitType > 0)
                         {
-                                proceeding=1;
-
-                        }else
+                                proceeding = 1;
+                        }
+                        else
                         {
                                 printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
                         }
@@ -247,15 +242,14 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
 
                 while (!proceeding)
                 {
-                        
-                        
+
                         printf("Enter the Unit: ");
                         scanf("%hhd", &ToBeConverted->UnitType);
-                        if(ToBeConverted->UnitType<=TempratureUnitsNumbers&&ToBeConverted->UnitType>0)
+                        if (ToBeConverted->UnitType <= TempratureUnitsNumbers && ToBeConverted->UnitType > 0)
                         {
-                                proceeding=1;
-
-                        }else
+                                proceeding = 1;
+                        }
+                        else
                         {
                                 printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
                         }
@@ -306,7 +300,6 @@ void TakingInputFromUser(Unit *ToBeConverted)
         {
                 printf("Choose The Unit From The List: ");
                 proceeding = ChooseUnitConverted(ToBeConverted);
-
         }
 }
 
@@ -511,31 +504,23 @@ void SpeedCoversion(Unit *ToBeConverted)
         }
         switch (SpecificationUnit.UnitType)
         {
-        case CM:
-
+        case MeterPerSec:
+                SpecificationUnit = *ToBeConverted;
+                ToMeterPerSec(&SpecificationUnit);
                 break;
-        case Meters:
-
+        case KMPerHr:
+                SpecificationUnit = *ToBeConverted;
+                ToKMPerHr(&SpecificationUnit);
                 break;
-        case KiloMeters:
-
+        case Milesperhour:
+                SpecificationUnit = *ToBeConverted;
+                ToMilesperhour(&SpecificationUnit);
                 break;
-        case Miles:
-
-                break;
-        case Inches:
-
-                break;
-        case Foot:
-
-                break;
-        case Yard:
-
-                break;
-
         default:
                 break;
         }
+        Print_Unit(ToBeConverted);
+        Print_Unit(&SpecificationUnit);
 }
 void TempratureCoversion(Unit *ToBeConverted)
 {
@@ -550,29 +535,24 @@ void TempratureCoversion(Unit *ToBeConverted)
         switch (SpecificationUnit.UnitType)
         {
         case Fahrenheit:
-                SpecificationUnit=*ToBeConverted;
+                SpecificationUnit = *ToBeConverted;
 
                 ToFahrenheit(&SpecificationUnit);
-
 
                 SpecificationUnit.UnitType = Fahrenheit;
                 break;
         case Kelvin:
-                        SpecificationUnit=*ToBeConverted;
-
+                SpecificationUnit = *ToBeConverted;
 
                 ToKelvin(&SpecificationUnit);
-        
 
                 SpecificationUnit.UnitType = Kelvin;
 
                 break;
         case Celsius:
-                        SpecificationUnit=*ToBeConverted;
-
+                SpecificationUnit = *ToBeConverted;
 
                 ToCelsius(&SpecificationUnit);
-        
 
                 SpecificationUnit.UnitType = Celsius;
 
@@ -582,4 +562,15 @@ void TempratureCoversion(Unit *ToBeConverted)
 
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
+}
+
+void clearScreen()
+{
+        {
+#ifdef _WIN32
+                system("cls");
+#else
+                system("clear");
+#endif
+        }
 }
