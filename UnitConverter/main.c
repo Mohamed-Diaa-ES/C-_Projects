@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int main()
 {
     Unit ToBeConverted;
@@ -55,7 +54,20 @@ int main()
         default:
             clearScreen();
             printf("Invalid Choice!! Try again ,please. \n");
+            continue;
             break;
+        }
+        printf("\nDo you want to proceed?\n");
+        signed char proceeding = IsUserProceeding();
+        if (proceeding == 'y')
+        {
+            continue;
+        }
+        else
+        {
+            clearScreen();
+            ExitProgram();
+            return 0;
         }
     }
 }

@@ -1,6 +1,7 @@
 #include "MainProgram_interfaces.h"
 #include <stdlib.h>
 #include <stdio.h>
+
 /**
  * @defgroup    UnitsSymbols
  * @brief       This group has the arrays of strings to hold the symbols of the available Quntities to be used for printing.
@@ -50,6 +51,32 @@ const uint8_t Max_ValueForQuantitySymbol[ConvertableQuantitesNumber] = {LengthUn
 /**
  * @}
  */
+uint8_t IsUnitTrue(Unit *ToBeConverted, uint8_t AvaialbleUnitsNumber)
+{
+        uint8_t proceeding = 0;
+        while (!proceeding)
+        {
+                printf("Enter the Unit: ");
+                uint8_t isvalidInput = scanf("%hhd", &ToBeConverted->UnitType);
+                if (isvalidInput != 1)
+                {
+                        /* code */
+                        handleScanfproblems(isvalidInput, 1); // 1 is just the number of the arguments to help input resolving
+                        continue;
+                }
+
+                if (ToBeConverted->UnitType <= AvaialbleUnitsNumber && ToBeConverted->UnitType > 0)
+                {
+                        proceeding = 1;
+                }
+                else
+                {
+                        printf("Invalid Unit Insertion! Please, Re-Enter The Unit Number!\n");
+                        proceeding = 0;
+                }
+        }
+}
+
 void Print_Unit(Unit *ToBePrinted)
 {
         switch (ToBePrinted->MeasuredType)
@@ -109,20 +136,7 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 printf("6-F\n");
                 printf("7-yd\n");
 
-                while (!proceeding)
-                {
-
-                        printf("Enter the Unit: ");
-                        scanf("%hhd", &ToBeConverted->UnitType);
-                        if (ToBeConverted->UnitType <= LengthUnitsNumbers && ToBeConverted->UnitType > 0)
-                        {
-                                proceeding = 1;
-                        }
-                        else
-                        {
-                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
-                        }
-                }
+                proceeding = IsUnitTrue(ToBeConverted, LengthUnitsNumbers);
 
                 break;
         case Mass:
@@ -133,20 +147,8 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 printf("5-lb\n");
                 printf("6-st\n");
 
-                while (!proceeding)
-                {
+                proceeding = IsUnitTrue(ToBeConverted, MassUnitsNumbers);
 
-                        printf("Enter the Unit: ");
-                        scanf("%hhd", &ToBeConverted->UnitType);
-                        if (ToBeConverted->UnitType <= MassUnitsNumbers && ToBeConverted->UnitType > 0)
-                        {
-                                proceeding = 1;
-                        }
-                        else
-                        {
-                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
-                        }
-                }
                 break;
         case Volume:
                 printf("\n1-mL\n");
@@ -154,20 +156,8 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 printf("3-m^3\n");
                 printf("4-gal\n");
 
-                while (!proceeding)
-                {
+                proceeding = IsUnitTrue(ToBeConverted, VolumeUnitsNumbers);
 
-                        printf("Enter the Unit: ");
-                        scanf("%hhd", &ToBeConverted->UnitType);
-                        if (ToBeConverted->UnitType <= VolumeUnitsNumbers && ToBeConverted->UnitType > 0)
-                        {
-                                proceeding = 1;
-                        }
-                        else
-                        {
-                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
-                        }
-                }
                 break;
         case Time:
                 printf("\n1-ms\n");
@@ -177,20 +167,8 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 printf("5-d\n");
                 printf("6-wk\n");
 
-                while (!proceeding)
-                {
+                proceeding = IsUnitTrue(ToBeConverted, TimeUnitsNumbers);
 
-                        printf("Enter the Unit: ");
-                        scanf("%hhd", &ToBeConverted->UnitType);
-                        if (ToBeConverted->UnitType <= TimeUnitsNumbers && ToBeConverted->UnitType > 0)
-                        {
-                                proceeding = 1;
-                        }
-                        else
-                        {
-                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
-                        }
-                }
                 break;
         case Digital_Storage:
                 printf("\n1-b(bit)\n");
@@ -200,60 +178,23 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 printf("5-GB\n");
                 printf("6-TB\n");
 
-                while (!proceeding)
-                {
+                proceeding = IsUnitTrue(ToBeConverted, Digital_StoragUnitsNumbers);
 
-                        printf("Enter the Unit: ");
-                        scanf("%hhd", &ToBeConverted->UnitType);
-                        if (ToBeConverted->UnitType <= Digital_StoragUnitsNumbers && ToBeConverted->UnitType > 0)
-                        {
-                                proceeding = 1;
-                        }
-                        else
-                        {
-                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
-                        }
-                }
                 break;
         case Speed:
                 printf("\n1-m/s\n");
                 printf("2-km/h\n");
                 printf("3-mph\n");
 
-                while (!proceeding)
-                {
+                proceeding = IsUnitTrue(ToBeConverted, SpeedUnitsNumbers);
 
-                        printf("Enter the Unit: ");
-                        scanf("%hhd", &ToBeConverted->UnitType);
-                        if (ToBeConverted->UnitType <= SpeedUnitsNumbers && ToBeConverted->UnitType > 0)
-                        {
-                                proceeding = 1;
-                        }
-                        else
-                        {
-                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
-                        }
-                }
                 break;
         case Temprature:
                 printf("\n1-F\n");
                 printf("2-C\n");
                 printf("3-K\n");
 
-                while (!proceeding)
-                {
-
-                        printf("Enter the Unit: ");
-                        scanf("%hhd", &ToBeConverted->UnitType);
-                        if (ToBeConverted->UnitType <= TempratureUnitsNumbers && ToBeConverted->UnitType > 0)
-                        {
-                                proceeding = 1;
-                        }
-                        else
-                        {
-                                printf("Invalid Unit Insertion! Please, Re-Enter The Unit!\n");
-                        }
-                }
+                proceeding = IsUnitTrue(ToBeConverted, TempratureUnitsNumbers);
 
                 break;
 
@@ -263,7 +204,7 @@ uint8_t ChooseUnitConverted(Unit *ToBeConverted)
                 break;
         }
 
-        ToBeConverted->UnitType--;
+        ToBeConverted->UnitType--; // to match defined inputs
 
         return 1; // True Action
 }
@@ -287,22 +228,44 @@ void WelcomingAndQuantityAsking(uint8_t *Choice)
         printf("\n6-Speed");
         printf("\n7-Temprature");
         printf("\n8-Exit.");
-        printf("\nEnter Your Choice: ");
-        scanf("%hhd", Choice);
+        while (1)
+        {
+                printf("\nEnter Your Choice: ");
+                uint8_t isvalidInput = scanf("%hhd", Choice);
+                if (isvalidInput != 1)
+                {
+                        handleScanfproblems(isvalidInput, 1); // 1 is just the number of the arguments to help input resolving
+                }
+                else
+                {
+                        return;
+                }
+        }
 }
 
 void TakingInputFromUser(Unit *ToBeConverted)
 {
         printf("Enter The Value: ");
-        scanf("%lf", &ToBeConverted->Value);
-        uint8_t proceeding = 0;
-        while (!proceeding)
+        while (1)
         {
-                printf("Choose The Unit From The List: ");
-                proceeding = ChooseUnitConverted(ToBeConverted);
+                uint8_t isvalidInput = scanf("%lf", &ToBeConverted->Value);
+                if (isvalidInput != 1)
+                {
+                        handleScanfproblems(isvalidInput, 1); // 1 is just the number of the arguments to help input resolving
+                }
+                else
+                {
+
+                        uint8_t proceeding = 0;
+                        while (!proceeding)
+                        {
+                                printf("Choose The Unit From The List: ");
+                                proceeding = ChooseUnitConverted(ToBeConverted);
+                        }
+                        return;
+                }
         }
 }
-
 void ExitProgram()
 {
         printf("Have A Nice Day!");
@@ -618,4 +581,43 @@ void clearScreen()
                 system("clear");
 #endif
         }
+}
+
+signed char IsUserProceeding()
+{
+        uint8_t ans = 0;
+        while (1)
+        {
+                printf("\nEnter Your Choice:(Y,N) ");
+                scanf(" %c", &ans);
+                if (ans == 'n' || ans == 'N')
+                {
+
+                        return 'n';
+                }
+                else if (ans == 'y' || ans == 'Y')
+                {
+
+                        return 'y';
+                }
+                else
+                {
+                        printf("INVALID INPUT TRY AGAIN.");
+                }
+        }
+}
+
+void handleScanfproblems(uint8_t valid, uint8_t howManyInputs)
+{
+        if (valid == 1)
+        {
+                return;
+        }
+        else
+        {
+                int garbage;
+                while (garbage = getchar() != '\n' && garbage != EOF)
+                        ;
+        }
+        printf("\nThis is invalid Input please enter a number\n");
 }
