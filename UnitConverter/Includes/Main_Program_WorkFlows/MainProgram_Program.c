@@ -61,7 +61,7 @@ uint8_t IsUnitTrue(Unit *ToBeConverted, uint8_t AvaialbleUnitsNumber)
                 if (isvalidInput != 1)
                 {
                         /* code */
-                        handleScanfproblems(isvalidInput, 1); // 1 is just the number of the arguments to help input resolving
+                        handleScanfproblems(isvalidInput, OneInputToScanf); // 1 is just the number of the arguments to help input resolving
                         continue;
                 }
 
@@ -234,7 +234,7 @@ void WelcomingAndQuantityAsking(uint8_t *Choice)
                 uint8_t isvalidInput = scanf("%hhd", Choice);
                 if (isvalidInput != 1)
                 {
-                        handleScanfproblems(isvalidInput, 1); // 1 is just the number of the arguments to help input resolving
+                        handleScanfproblems(isvalidInput, OneInputToScanf); // 1 is just the number of the arguments to help input resolving
                 }
                 else
                 {
@@ -251,7 +251,7 @@ void TakingInputFromUser(Unit *ToBeConverted)
                 uint8_t isvalidInput = scanf("%lf", &ToBeConverted->Value);
                 if (isvalidInput != 1)
                 {
-                        handleScanfproblems(isvalidInput, 1); // 1 is just the number of the arguments to help input resolving
+                        handleScanfproblems(isvalidInput, OneInputToScanf); // 1 is just the number of the arguments to help input resolving
                 }
                 else
                 {
@@ -609,15 +609,14 @@ signed char IsUserProceeding()
 
 void handleScanfproblems(uint8_t valid, uint8_t howManyInputs)
 {
-        if (valid == 1)
+        if (valid == howManyInputs)
         {
                 return;
         }
         else
         {
                 int garbage;
-                while (garbage = getchar() != '\n' && garbage != EOF)
-                        ;
+                while (garbage = getchar() != '\n' && garbage != EOF);
         }
         printf("\nThis is invalid Input please enter a number\n");
 }

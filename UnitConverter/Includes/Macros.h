@@ -2,6 +2,12 @@
 #define _MACROS__H
 
 /**
+ * @details This macro used to be used by the programmer == 1 used 
+ *          when using handleScanfproblems function to Enhance Error handling
+ *          it literally means we have passed one input to scanf.
+ */
+#define OneInputToScanf 1
+/**
  * @defgroup ActionCodes
  * @brief    This Group Defines the Error and the action codes used to handle the Actions.
  * @{
