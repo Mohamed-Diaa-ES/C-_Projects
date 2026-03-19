@@ -1,25 +1,32 @@
 #include "../Macros.h"
 #include "UnitConverter_Interface.h"
 
-
 /**
  * @brief Trnsform the length Value unit to the Meters Unit
  */
 uint8_t ToMeters(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
-    if (ToBeTransformed->MeasuredType != Length) 
+    if (ToBeTransformed->MeasuredType != Length)
     {
         return Quanitity_MissMatch;
     }
     /**
      * @details This switch case choose the From-To Conversion to convert to Meters.
      *          This Assure me that I do not make relative Conversion to each unit like: CM to KilliMeters
-     *          As I transform to Meters I can transform to other from Meter 
-     *          only by dividing by the Meter to (other unit) Conversion Macro. 
+     *          As I transform to Meters I can transform to other from Meter
+     *          only by dividing by the Meter to (other unit) Conversion Macro.
      *          This makes the Function Reusable by other units reducing the Function
      */
     switch (ToBeTransformed->UnitType)
@@ -54,7 +61,7 @@ uint8_t ToMeters(Unit *ToBeTransformed)
         return UnRegisteredUnitFortheMeasuredQuantity;
         break;
     }
-    ToBeTransformed->UnitType = Meters; //Change the Unit type.
+    ToBeTransformed->UnitType = Meters; // Change the Unit type.
     ToBeTransformed->Value /= Meters_To_Meters;
     return Transformation_Done;
 }
@@ -63,44 +70,69 @@ uint8_t ToMeters(Unit *ToBeTransformed)
  */
 uint8_t ToMiles(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
     if (ToBeTransformed->MeasuredType != Length)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
-    ToMeters(ToBeTransformed); //Transform to Meters.
-    ToBeTransformed->UnitType = Miles; //Change The unit type to be in Miles
+
+    ToMeters(ToBeTransformed);         // Transform to Meters.
+    ToBeTransformed->UnitType = Miles; // Change The unit type to be in Miles
     ToBeTransformed->Value /= Miles_To_Meters;
     return Transformation_Done;
 }
 
 uint8_t ToCM(Unit *ToBeTransformed)
 {
-      /**
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
+    /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
     if (ToBeTransformed->MeasuredType != Length)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
-    ToMeters(ToBeTransformed);//Transform to Meters.
-    ToBeTransformed->UnitType = CM; //Change The unit type to be in CM
+    ToMeters(ToBeTransformed);      // Transform to Meters.
+    ToBeTransformed->UnitType = CM; // Change The unit type to be in CM
     ToBeTransformed->Value /= CM_To_Meters;
     return Transformation_Done;
 }
 uint8_t ToKiloMeters(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
     if (ToBeTransformed->MeasuredType != Length)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToMeters(ToBeTransformed);
     ToBeTransformed->UnitType = KiloMeters;
@@ -110,13 +142,21 @@ uint8_t ToKiloMeters(Unit *ToBeTransformed)
 
 uint8_t ToInches(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
     if (ToBeTransformed->MeasuredType != Length)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToMeters(ToBeTransformed);
     ToBeTransformed->UnitType = Inches;
@@ -125,13 +165,21 @@ uint8_t ToInches(Unit *ToBeTransformed)
 }
 uint8_t ToFoot(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
     if (ToBeTransformed->MeasuredType != Length)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToMeters(ToBeTransformed);
     ToBeTransformed->UnitType = Foot;
@@ -140,13 +188,21 @@ uint8_t ToFoot(Unit *ToBeTransformed)
 }
 uint8_t ToYard(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
     if (ToBeTransformed->MeasuredType != Length)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToMeters(ToBeTransformed);
     ToBeTransformed->UnitType = Yard;
@@ -155,13 +211,25 @@ uint8_t ToYard(Unit *ToBeTransformed)
 }
 uint8_t ToKiloGrams(Unit *ToBeTransformed)
 {
-      /**
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
+    /**
      * @brief prevent transforming Other measured Quanities.
-     * @todo  Add a error handling technique (probalbly will be Error Codes). 
+     * @todo  Add a error handling technique (probalbly will be Error Codes).
      */
     if (ToBeTransformed->MeasuredType != Mass)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     switch (ToBeTransformed->UnitType)
     {
@@ -191,15 +259,23 @@ uint8_t ToKiloGrams(Unit *ToBeTransformed)
         break;
     }
     ToBeTransformed->UnitType = KiloGrams;
-    ToBeTransformed->Value/= KiloGrams_To_KiloGrams;
+    ToBeTransformed->Value /= KiloGrams_To_KiloGrams;
     return Transformation_Done;
 }
 
 uint8_t ToGrams(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Mass)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToKiloGrams(ToBeTransformed);
     ToBeTransformed->UnitType = Grams;
@@ -209,9 +285,17 @@ uint8_t ToGrams(Unit *ToBeTransformed)
 
 uint8_t ToTons(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Mass)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToKiloGrams(ToBeTransformed);
     ToBeTransformed->UnitType = Tons;
@@ -221,9 +305,17 @@ uint8_t ToTons(Unit *ToBeTransformed)
 
 uint8_t ToOunces(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Mass)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToKiloGrams(ToBeTransformed);
     ToBeTransformed->UnitType = Ounces;
@@ -233,9 +325,17 @@ uint8_t ToOunces(Unit *ToBeTransformed)
 
 uint8_t ToPound(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Mass)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToKiloGrams(ToBeTransformed);
     ToBeTransformed->UnitType = Pound;
@@ -245,9 +345,17 @@ uint8_t ToPound(Unit *ToBeTransformed)
 
 uint8_t ToStone(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Mass)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToKiloGrams(ToBeTransformed);
     ToBeTransformed->UnitType = Stone;
@@ -257,9 +365,21 @@ uint8_t ToStone(Unit *ToBeTransformed)
 
 uint8_t ToLiter(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Volume)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     switch (ToBeTransformed->UnitType)
     {
@@ -286,9 +406,17 @@ uint8_t ToLiter(Unit *ToBeTransformed)
 
 uint8_t ToMilliLiter(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Volume)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToLiter(ToBeTransformed);
     ToBeTransformed->UnitType = MilliLiter;
@@ -298,9 +426,17 @@ uint8_t ToMilliLiter(Unit *ToBeTransformed)
 
 uint8_t ToCubicMeter(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Volume)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToLiter(ToBeTransformed);
     ToBeTransformed->UnitType = CubicMeter;
@@ -310,9 +446,17 @@ uint8_t ToCubicMeter(Unit *ToBeTransformed)
 
 uint8_t ToGallon(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Volume)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToLiter(ToBeTransformed);
     ToBeTransformed->UnitType = Gallon;
@@ -322,9 +466,17 @@ uint8_t ToGallon(Unit *ToBeTransformed)
 
 uint8_t ToMillisecond(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Time)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToSecond(ToBeTransformed);
     ToBeTransformed->UnitType = Millisecond;
@@ -334,9 +486,17 @@ uint8_t ToMillisecond(Unit *ToBeTransformed)
 
 uint8_t ToSecond(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Time)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     switch (ToBeTransformed->UnitType)
     {
@@ -369,21 +529,37 @@ uint8_t ToSecond(Unit *ToBeTransformed)
 
 uint8_t ToMinute(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Time)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToSecond(ToBeTransformed);
     ToBeTransformed->UnitType = Minute;
     ToBeTransformed->Value /= Minute_To_Second;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToHour(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Time)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToSecond(ToBeTransformed);
     ToBeTransformed->UnitType = Hour;
@@ -393,45 +569,77 @@ uint8_t ToHour(Unit *ToBeTransformed)
 
 uint8_t ToDay(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Time)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToSecond(ToBeTransformed);
     ToBeTransformed->UnitType = Day;
     ToBeTransformed->Value /= Day_To_Second;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToWeek(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Time)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToSecond(ToBeTransformed);
     ToBeTransformed->UnitType = Week;
     ToBeTransformed->Value /= Week_To_Second;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToBit(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Digital_Storage)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Bit;
     ToBeTransformed->Value /= Bit_To_Byte;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToByte(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Digital_Storage)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     switch (ToBeTransformed->UnitType)
     {
@@ -459,14 +667,22 @@ uint8_t ToByte(Unit *ToBeTransformed)
     }
     ToBeTransformed->UnitType = Byte;
     ToBeTransformed->Value /= Byte_To_Byte;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToKilobyte(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Digital_Storage)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Kilobyte;
@@ -476,45 +692,73 @@ uint8_t ToKilobyte(Unit *ToBeTransformed)
 
 uint8_t ToMegabyte(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Digital_Storage)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Megabyte;
     ToBeTransformed->Value /= Megabyte_To_Byte;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToGigabyte(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Digital_Storage)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Gigabyte;
     ToBeTransformed->Value /= Gigabyte_To_Byte;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToTerabyte(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if (ToBeTransformed->Value < 0)
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Digital_Storage)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Terabyte;
     ToBeTransformed->Value /= Terabyte_To_Byte;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToMeterPerSec(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
     if (ToBeTransformed->MeasuredType != Speed)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     switch (ToBeTransformed->UnitType)
     {
@@ -533,14 +777,18 @@ uint8_t ToMeterPerSec(Unit *ToBeTransformed)
     }
     ToBeTransformed->UnitType = MeterPerSec;
     ToBeTransformed->Value /= MeterPerSec_To_MeterPerSec;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToKMPerHr(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
     if (ToBeTransformed->MeasuredType != Speed)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToMeterPerSec(ToBeTransformed);
     ToBeTransformed->UnitType = KMPerHr;
@@ -550,59 +798,94 @@ uint8_t ToKMPerHr(Unit *ToBeTransformed)
 
 uint8_t ToMilesperhour(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
     if (ToBeTransformed->MeasuredType != Speed)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToMeterPerSec(ToBeTransformed);
     ToBeTransformed->UnitType = Milesperhour;
     ToBeTransformed->Value /= Milesperhour_To_MeterPerSec;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 uint8_t ToCelsius(Unit *ToBeTransformed)
 {
+
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if ((ToBeTransformed->UnitType == Kelvin && ToBeTransformed->Value < 0.0) ||
+        (ToBeTransformed->UnitType == Celsius && ToBeTransformed->Value < -273.15) ||
+        (ToBeTransformed->UnitType == Fahrenheit && ToBeTransformed->Value < -459.67))
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Temprature)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     switch (ToBeTransformed->UnitType)
     {
     case Celsius:
-        ToBeTransformed->Value=Celsius_To_Celsius(ToBeTransformed->Value);
+        ToBeTransformed->Value = Celsius_To_Celsius(ToBeTransformed->Value);
         break;
     case Fahrenheit:
-        ToBeTransformed->Value=Fahrenheit_To_Celsius(ToBeTransformed->Value);
+        ToBeTransformed->Value = Fahrenheit_To_Celsius(ToBeTransformed->Value);
         break;
     case Kelvin:
-        ToBeTransformed->Value=Kelvin_To_Celsius(ToBeTransformed->Value);
+        ToBeTransformed->Value = Kelvin_To_Celsius(ToBeTransformed->Value);
         break;
 
     default:
         break;
     }
     ToBeTransformed->UnitType = Celsius;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 uint8_t ToFahrenheit(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if ((ToBeTransformed->UnitType == Kelvin && ToBeTransformed->Value < 0.0) ||
+        (ToBeTransformed->UnitType == Celsius && ToBeTransformed->Value < -273.15) ||
+        (ToBeTransformed->UnitType == Fahrenheit && ToBeTransformed->Value < -459.67))
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Temprature)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToCelsius(ToBeTransformed);
-    ToBeTransformed->Value=Celsius_To_Fahrenheit(ToBeTransformed->Value);
+    ToBeTransformed->Value = Celsius_To_Fahrenheit(ToBeTransformed->Value);
     ToBeTransformed->UnitType = Fahrenheit;
-        return Transformation_Done;
+    return Transformation_Done;
 }
 
 uint8_t ToKelvin(Unit *ToBeTransformed)
 {
+    if (ToBeTransformed == NULL)
+    {
+        return NullCrashing;
+    }
+    if ((ToBeTransformed->UnitType == Kelvin && ToBeTransformed->Value < 0.0) ||
+        (ToBeTransformed->UnitType == Celsius && ToBeTransformed->Value < -273.15) ||
+        (ToBeTransformed->UnitType == Fahrenheit && ToBeTransformed->Value < -459.67))
+    {
+        return Physical_Logic_Error;
+    }
     if (ToBeTransformed->MeasuredType != Temprature)
     {
-    return Quanitity_MissMatch;
+        return Quanitity_MissMatch;
     }
     ToCelsius(ToBeTransformed);
-    ToBeTransformed->Value=Celsius_To_Kelvin(ToBeTransformed->Value);
+    ToBeTransformed->Value = Celsius_To_Kelvin(ToBeTransformed->Value);
     ToBeTransformed->UnitType = Kelvin;
-        return Transformation_Done;
+    return Transformation_Done;
 }
