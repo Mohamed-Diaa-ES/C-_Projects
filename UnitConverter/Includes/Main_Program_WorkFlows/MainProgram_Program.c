@@ -309,14 +309,14 @@ void ExitProgram()
 void LengthCoversion(Unit *ToBeConverted) // takes each value and convert it to other unit
 {
         Unit SpecificationUnit = *ToBeConverted;
-        uint8_t proceeding = 0;
+        uint8_t proceeding = 1;
         uint8_t status = 0;
 
         while (!proceeding)
         {
                 clearScreen();
                 printf("Choose The unit you want to convert to: ");
-                proceeding = ChooseUnitConverted(&SpecificationUnit);
+                // proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
         switch (SpecificationUnit.UnitType)
         {
@@ -515,6 +515,7 @@ void TimeCoversion(Unit *ToBeConverted)
 }
 void Digital_StorageCoversion(Unit *ToBeConverted)
 {
+        ToBeConverted->Value=(double)((long long)ToBeConverted->Value);
         Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
         uint8_t status = 0;

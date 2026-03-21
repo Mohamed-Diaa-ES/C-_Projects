@@ -61,6 +61,7 @@ int main()
         signed char proceeding = IsUserProceeding();
         if (proceeding == 'y')
         {
+            clearScreen();
             continue;
         }
         else

@@ -1,0 +1,67 @@
+---
+:source:
+  :file: test/test_UnitConverter_Program.c
+  :dirname: test
+  :basename: test_UnitConverter_Program.c
+:successes:
+- :test: test_ToKiloGrams_Should_FailAndPreserveData_WhenGivenVolume
+  :line: 27
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ToCelsius_Should_FailAndPreserveData_WhenGivenTime
+  :line: 41
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ToMegabyte_Should_FailAndPreserveData_WhenGivenSpeed
+  :line: 55
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ToKiloGrams_Should_FailAndPreserveData_WhenMassIsNegative
+  :line: 91
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ToCelsius_Should_FailAndPreserveData_WhenKelvinIsBelowAbsoluteZero
+  :line: 105
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ToFahrenheit_Should_FailAndPreserveData_WhenCelsiusIsBelowAbsoluteZero
+  :line: 119
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ToBit_Should_CalculateFractionalBits_WhenGivenFractionalBytes
+  :line: 133
+  :message: ''
+  :unity_test_time: 0
+- :test: test_handleScanfproblems_Should_PassQuietly_WhenInputIsValid
+  :line: 158
+  :message: ''
+  :unity_test_time: 0
+- :test: test_LengthCoversion_Should_RouteToMeters_WhenUserSelectedMeters
+  :line: 170
+  :message: ''
+  :unity_test_time: 0
+:failures:
+- :test: test_ToMeters_Should_FailAndPreserveData_WhenGivenMass
+  :line: 23
+  :message: Expected 55 Was -9223372036854775808
+  :unity_test_time: 0
+- :test: test_ToMeters_Should_HandleNullPointerSafely
+  :line: 70
+  :message: Test case crashed
+  :unity_test_time: 0
+- :test: test_ToMeters_Should_FailAndPreserveData_WhenLengthIsNegative
+  :line: 86
+  :message: Expected 3 Was 1
+  :unity_test_time: 0
+- :test: test_ToMeters_Should_Fail_WhenMultiplicationCausesOverflow
+  :line: 193
+  :message: Expected 2 Was 1
+  :unity_test_time: 0
+:ignores: []
+:counts:
+  :total: 13
+  :passed: 9
+  :failed: 4
+  :ignored: 0
+:stdout: []
+:time: 0.07262030034326017

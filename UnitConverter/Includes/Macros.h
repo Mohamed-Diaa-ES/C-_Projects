@@ -2,7 +2,36 @@
 #define _MACROS__H
 
 /**
- * @details This macro used to be used by the programmer == 1 used 
+ * @defgroup Physical_Limits Physical Boundary Limits
+ * @brief   Macros defining the absolute minimum physical values to prevent impossible states.
+ * @{
+ */
+
+/**
+ * @brief The lowest possible value for standard physical quantities (Length, Mass, Volume, Time, Speed, Digital Storage).
+ */
+#define ABSOLUTE_MINIMUM_STANDARD 0.0
+
+/**
+ * @brief Absolute zero in Kelvin. Temperature cannot drop below this.
+ */
+#define ABSOLUTE_ZERO_KELVIN 0.0
+
+/**
+ * @brief Absolute zero in Celsius.
+ */
+#define ABSOLUTE_ZERO_CELSIUS -273.15
+
+/**
+ * @brief Absolute zero in Fahrenheit.
+ */
+#define ABSOLUTE_ZERO_FAHRENHEIT -459.67
+
+/**
+ * @}
+ */
+/**
+ * @details This macro used to be used by the programmer == 1 used
  *          when using handleScanfproblems function to Enhance Error handling
  *          it literally means we have passed one input to scanf.
  */
@@ -13,13 +42,19 @@
  * @{
  */
 /**
- * @brief This macro tells the main.c File that there is something like transforming kilobytes to grams.
- */
-#define Quanitity_MissMatch 255
-/**
  * @brief This macro tells the main app that the transaction is done with no errors
  */
 #define Transformation_Done 1
+/**
+ * @brief  The value violates the laws of physics
+ * */
+#define Physical_Logic_Error 3
+
+#define NullCrashing 2 // handle the NullCrashing
+/**
+ * @brief This macro tells the main.c File that there is something like transforming kilobytes to grams.
+ */
+#define Quanitity_MissMatch 255
 /**
  * @brief This macro tells the main app that the transaction is done with no errors
  */
@@ -773,5 +808,4 @@
 /**
  * @}
  */
-
 #endif

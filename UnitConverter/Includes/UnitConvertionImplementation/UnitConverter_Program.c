@@ -609,10 +609,12 @@ uint8_t ToWeek(Unit *ToBeTransformed)
 
 uint8_t ToBit(Unit *ToBeTransformed)
 {
+    
     if (ToBeTransformed == NULL)
     {
         return NullCrashing;
     }
+    ToBeTransformed->Value=(double)((long long)ToBeTransformed->Value);
     if (ToBeTransformed->Value < 0)
     {
         return Physical_Logic_Error;
@@ -623,16 +625,18 @@ uint8_t ToBit(Unit *ToBeTransformed)
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Bit;
-    ToBeTransformed->Value /= Bit_To_Byte;
+    ToBeTransformed->Value =(double)((int) ToBeTransformed->Value/ Bit_To_Byte);
     return Transformation_Done;
 }
 
 uint8_t ToByte(Unit *ToBeTransformed)
 {
+    
     if (ToBeTransformed == NULL)
     {
         return NullCrashing;
     }
+    ToBeTransformed->Value=(double)((long long)ToBeTransformed->Value);
     if (ToBeTransformed->Value < 0)
     {
         return Physical_Logic_Error;
@@ -666,16 +670,18 @@ uint8_t ToByte(Unit *ToBeTransformed)
         break;
     }
     ToBeTransformed->UnitType = Byte;
-    ToBeTransformed->Value /= Byte_To_Byte;
+    ToBeTransformed->Value =(double)((int) ToBeTransformed->Value/ Byte_To_Byte);
     return Transformation_Done;
 }
 
 uint8_t ToKilobyte(Unit *ToBeTransformed)
 {
+    
     if (ToBeTransformed == NULL)
     {
         return NullCrashing;
     }
+    ToBeTransformed->Value=(double)((long long)ToBeTransformed->Value);
     if (ToBeTransformed->Value < 0)
     {
         return Physical_Logic_Error;
@@ -686,16 +692,18 @@ uint8_t ToKilobyte(Unit *ToBeTransformed)
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Kilobyte;
-    ToBeTransformed->Value /= Kilobyte_To_Byte;
+    ToBeTransformed->Value =(double)((int) ToBeTransformed->Value/ Kilobyte_To_Byte);
     return Transformation_Done;
 }
 
 uint8_t ToMegabyte(Unit *ToBeTransformed)
 {
+    
     if (ToBeTransformed == NULL)
     {
         return NullCrashing;
     }
+    ToBeTransformed->Value=(double)((long long)ToBeTransformed->Value);
     if (ToBeTransformed->Value < 0)
     {
         return Physical_Logic_Error;
@@ -706,16 +714,18 @@ uint8_t ToMegabyte(Unit *ToBeTransformed)
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Megabyte;
-    ToBeTransformed->Value /= Megabyte_To_Byte;
+    ToBeTransformed->Value =(double)((int) ToBeTransformed->Value/ Megabyte_To_Byte);
     return Transformation_Done;
 }
 
 uint8_t ToGigabyte(Unit *ToBeTransformed)
 {
+    
     if (ToBeTransformed == NULL)
     {
         return NullCrashing;
     }
+    ToBeTransformed->Value=(double)((long long)ToBeTransformed->Value);
     if (ToBeTransformed->Value < 0)
     {
         return Physical_Logic_Error;
@@ -726,16 +736,18 @@ uint8_t ToGigabyte(Unit *ToBeTransformed)
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Gigabyte;
-    ToBeTransformed->Value /= Gigabyte_To_Byte;
+    ToBeTransformed->Value =(double)((int) ToBeTransformed->Value/ Gigabyte_To_Byte);
     return Transformation_Done;
 }
 
 uint8_t ToTerabyte(Unit *ToBeTransformed)
 {
+    
     if (ToBeTransformed == NULL)
     {
         return NullCrashing;
     }
+    ToBeTransformed->Value=(double)((long long)ToBeTransformed->Value);
     if (ToBeTransformed->Value < 0)
     {
         return Physical_Logic_Error;
@@ -746,7 +758,7 @@ uint8_t ToTerabyte(Unit *ToBeTransformed)
     }
     ToByte(ToBeTransformed);
     ToBeTransformed->UnitType = Terabyte;
-    ToBeTransformed->Value /= Terabyte_To_Byte;
+    ToBeTransformed->Value =(double)((int) ToBeTransformed->Value/ Terabyte_To_Byte);
     return Transformation_Done;
 }
 
