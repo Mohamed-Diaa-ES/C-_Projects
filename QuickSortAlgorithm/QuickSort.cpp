@@ -1,10 +1,14 @@
 #include <windows.h>
 #include <iostream>
 #include <vector>
-#include <utility>
 
 using namespace std;
-
+void swap(int *p1, int *p2)
+{
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
 // using the Vecotrs
 vector<int> QuickSortFunction_Vectors(vector<int> val)
 {
