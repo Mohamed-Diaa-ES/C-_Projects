@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
+#include "KeyGen/KeyGen.h"
 
 int main(int argc, char **argv)
 {
@@ -18,6 +19,7 @@ int main(int argc, char **argv)
     {
         if (strcmp(argv[1], "keygen") == 0)
         {
+            KeyGenAlgorithm(argv[2],argv[3]);
         }
         else if (argc == 5)
         {

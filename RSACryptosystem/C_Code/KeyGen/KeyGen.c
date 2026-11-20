@@ -1,20 +1,11 @@
-#include <stdint.h>
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
-typedef struct
-{
-    uint16_t p;
-    uint16_t q;
 
-} Q_P;
-#define Prime 1
-#define NOT_Prime 0
-
-#define MAX_Specified 65535
-#define MIN_Specified 32768
+#define Helper_Functions
+#include "KeyGen.h"
 uint64_t n = 0;
-const uint64_t e = 65537;
+const uint64_t e = Specified_e_Value;
 uint64_t d = 0;
 
 uint8_t is_Prime(uint64_t n)
@@ -109,10 +100,4 @@ void KeyGenAlgorithm(const char *PrivateKeyFilePlaceAndName, const char *PublicK
     fprintf(PublicKeyFileptr, "%llu\n%llu\n", e, n);
 
     fclose(PublicKeyFileptr);
-}
-
-
-int main(int argc, char **argv)
-{
-    KeyGenAlgorithm("../Keys_Ciph_Plain_Files/Private_Key_File.txt", "../Keys_Ciph_Plain_Files/Public_Key_File.txt");
 }
