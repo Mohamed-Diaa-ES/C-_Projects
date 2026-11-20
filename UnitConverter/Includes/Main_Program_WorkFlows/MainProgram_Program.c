@@ -51,6 +51,39 @@ const uint8_t Max_ValueForQuantitySymbol[ConvertableQuantitesNumber] = {LengthUn
 /**
  * @}
  */
+/**
+ * @brief Evaluates the return status of a conversion and prints the appropriate feedback.
+ * @param status_code The uint8_t code returned by the conversion functions.
+ */
+void Handle_Conversion_Status(uint8_t status_code)
+{
+        switch (status_code)
+        {
+        case Transformation_Done:
+                break;
+
+        case UnRegisteredUnitFortheMeasuredQuantity:
+                printf("\n[ERROR] Unregistered Unit: The system does not support this conversion path.\n");
+                break;
+
+        case NullCrashing:
+                printf("\n[FATAL SYSTEM ERROR] Null Pointer Dereference prevented in conversion module.\n");
+                break;
+
+        case Physical_Logic_Error:
+                printf("\n[ERROR] Physical Logic Violation: The provided value breaks physical boundaries (e.g., negative length or below absolute zero).\n");
+                break;
+
+        case Quanitity_MissMatch:
+                printf("\n[ERROR] Quantity Mismatch: Cannot convert between incompatible physical domains.\n");
+                break;
+
+        default:
+                printf("\n[UNKNOWN ERROR] The conversion module returned an undefined status code: %d\n", status_code);
+                break;
+        }
+}
+
 uint8_t IsUnitTrue(Unit *ToBeConverted, uint8_t AvaialbleUnitsNumber)
 {
         uint8_t proceeding = 0;
@@ -71,6 +104,7 @@ uint8_t IsUnitTrue(Unit *ToBeConverted, uint8_t AvaialbleUnitsNumber)
                 }
                 else
                 {
+
                         printf("Invalid Unit Insertion! Please, Re-Enter The Unit Number!\n");
                         proceeding = 0;
                 }
@@ -232,6 +266,7 @@ void WelcomingAndQuantityAsking(uint8_t *Choice)
         {
                 printf("\nEnter Your Choice: ");
                 uint8_t isvalidInput = scanf("%hhd", Choice);
+                clearScreen();
                 if (isvalidInput != 1)
                 {
                         handleScanfproblems(isvalidInput, OneInputToScanf); // 1 is just the number of the arguments to help input resolving
@@ -274,53 +309,58 @@ void ExitProgram()
 void LengthCoversion(Unit *ToBeConverted) // takes each value and convert it to other unit
 {
         Unit SpecificationUnit = *ToBeConverted;
-        uint8_t proceeding = 0;
+        uint8_t proceeding = 1;
+        uint8_t status = 0;
+
         while (!proceeding)
         {
+                clearScreen();
                 printf("Choose The unit you want to convert to: ");
-                proceeding = ChooseUnitConverted(&SpecificationUnit);
+                // proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
         switch (SpecificationUnit.UnitType)
         {
         case CM:
                 SpecificationUnit = *ToBeConverted;
-                ToCM(&SpecificationUnit);
+                status = ToCM(&SpecificationUnit);
 
                 break;
         case Meters:
                 SpecificationUnit = *ToBeConverted;
-                ToMeters(&SpecificationUnit);
+                status = ToMeters(&SpecificationUnit);
 
                 break;
         case KiloMeters:
                 SpecificationUnit = *ToBeConverted;
-                ToKiloMeters(&SpecificationUnit);
+                status = ToKiloMeters(&SpecificationUnit);
 
                 break;
         case Miles:
                 SpecificationUnit = *ToBeConverted;
-                ToMiles(&SpecificationUnit);
+                status = ToMiles(&SpecificationUnit);
 
                 break;
         case Inches:
                 SpecificationUnit = *ToBeConverted;
-                ToInches(&SpecificationUnit);
+                status = ToInches(&SpecificationUnit);
 
                 break;
         case Foot:
                 SpecificationUnit = *ToBeConverted;
-                ToFoot(&SpecificationUnit);
+                status = ToFoot(&SpecificationUnit);
 
                 break;
         case Yard:
                 SpecificationUnit = *ToBeConverted;
-                ToYard(&SpecificationUnit);
+                status = ToYard(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
+        Handle_Conversion_Status(status);
+        clearScreen();
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
 }
@@ -328,8 +368,11 @@ void MassCoversion(Unit *ToBeConverted)
 {
         Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
+        uint8_t status = 0;
+
         while (!proceeding)
         {
+                clearScreen();
                 printf("Choose The unit you want to convert to: ");
                 proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
@@ -337,38 +380,40 @@ void MassCoversion(Unit *ToBeConverted)
         {
         case Grams:
                 SpecificationUnit = *ToBeConverted;
-                ToGrams(&SpecificationUnit);
+                status = ToGrams(&SpecificationUnit);
 
                 break;
         case KiloGrams:
                 SpecificationUnit = *ToBeConverted;
-                ToKiloGrams(&SpecificationUnit);
+                status = ToKiloGrams(&SpecificationUnit);
 
                 break;
         case Tons:
                 SpecificationUnit = *ToBeConverted;
-                ToTons(&SpecificationUnit);
+                status = ToTons(&SpecificationUnit);
 
                 break;
         case Ounces:
                 SpecificationUnit = *ToBeConverted;
-                ToOunces(&SpecificationUnit);
+                status = ToOunces(&SpecificationUnit);
 
                 break;
         case Pound:
                 SpecificationUnit = *ToBeConverted;
-                ToPound(&SpecificationUnit);
+                status = ToPound(&SpecificationUnit);
 
                 break;
         case Stone:
                 SpecificationUnit = *ToBeConverted;
-                ToStone(&SpecificationUnit);
+                status = ToStone(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
+        Handle_Conversion_Status(status);
+        clearScreen();
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
 }
@@ -376,8 +421,11 @@ void VolumeCoversion(Unit *ToBeConverted)
 {
         Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
+        uint8_t status = 0;
+
         while (!proceeding)
         {
+                clearScreen();
                 printf("Choose The unit you want to convert to: ");
                 proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
@@ -385,28 +433,30 @@ void VolumeCoversion(Unit *ToBeConverted)
         {
         case MilliLiter:
                 SpecificationUnit = *ToBeConverted;
-                ToMilliLiter(&SpecificationUnit);
+                status = ToMilliLiter(&SpecificationUnit);
 
                 break;
         case Liter:
                 SpecificationUnit = *ToBeConverted;
-                ToLiter(&SpecificationUnit);
+                status = ToLiter(&SpecificationUnit);
 
                 break;
         case CubicMeter:
                 SpecificationUnit = *ToBeConverted;
-                ToCubicMeter(&SpecificationUnit);
+                status = ToCubicMeter(&SpecificationUnit);
 
                 break;
         case Gallon:
                 SpecificationUnit = *ToBeConverted;
-                ToGallon(&SpecificationUnit);
+                status = ToGallon(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
+        Handle_Conversion_Status(status);
+        clearScreen();
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
 }
@@ -414,8 +464,11 @@ void TimeCoversion(Unit *ToBeConverted)
 {
         Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
+        uint8_t status = 0;
+
         while (!proceeding)
         {
+                clearScreen();
                 printf("Choose The unit you want to convert to: ");
                 proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
@@ -423,48 +476,53 @@ void TimeCoversion(Unit *ToBeConverted)
         {
         case Millisecond:
                 SpecificationUnit = *ToBeConverted;
-                ToMillisecond(&SpecificationUnit);
+                status = ToMillisecond(&SpecificationUnit);
 
                 break;
         case Second:
                 SpecificationUnit = *ToBeConverted;
-                ToSecond(&SpecificationUnit);
+                status = ToSecond(&SpecificationUnit);
 
                 break;
         case Minute:
                 SpecificationUnit = *ToBeConverted;
-                ToMinute(&SpecificationUnit);
+                status = ToMinute(&SpecificationUnit);
 
                 break;
         case Hour:
                 SpecificationUnit = *ToBeConverted;
-                ToHour(&SpecificationUnit);
+                status = ToHour(&SpecificationUnit);
 
                 break;
         case Day:
                 SpecificationUnit = *ToBeConverted;
-                ToDay(&SpecificationUnit);
+                status = ToDay(&SpecificationUnit);
 
                 break;
         case Week:
                 SpecificationUnit = *ToBeConverted;
-                ToWeek(&SpecificationUnit);
+                status = ToWeek(&SpecificationUnit);
 
                 break;
 
         default:
                 break;
         }
-
+        Handle_Conversion_Status(status);
+        clearScreen();
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
 }
 void Digital_StorageCoversion(Unit *ToBeConverted)
 {
+        ToBeConverted->Value=(double)((long long)ToBeConverted->Value);
         Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
+        uint8_t status = 0;
+
         while (!proceeding)
         {
+                clearScreen();
                 printf("Choose The unit you want to convert to: ");
                 proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
@@ -472,32 +530,34 @@ void Digital_StorageCoversion(Unit *ToBeConverted)
         {
         case Bit:
                 SpecificationUnit = *ToBeConverted;
-                ToBit(&SpecificationUnit);
+                status = ToBit(&SpecificationUnit);
                 break;
         case Byte:
                 SpecificationUnit = *ToBeConverted;
-                ToByte(&SpecificationUnit);
+                status = ToByte(&SpecificationUnit);
                 break;
         case Kilobyte:
                 SpecificationUnit = *ToBeConverted;
-                ToKilobyte(&SpecificationUnit);
+                status = ToKilobyte(&SpecificationUnit);
                 break;
         case Megabyte:
                 SpecificationUnit = *ToBeConverted;
-                ToMegabyte(&SpecificationUnit);
+                status = ToMegabyte(&SpecificationUnit);
                 break;
         case Gigabyte:
                 SpecificationUnit = *ToBeConverted;
-                ToGigabyte(&SpecificationUnit);
+                status = ToGigabyte(&SpecificationUnit);
                 break;
         case Terabyte:
                 SpecificationUnit = *ToBeConverted;
-                ToTerabyte(&SpecificationUnit);
+                status = ToTerabyte(&SpecificationUnit);
                 break;
 
         default:
                 break;
         }
+        Handle_Conversion_Status(status);
+        clearScreen();
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
 }
@@ -505,8 +565,11 @@ void SpeedCoversion(Unit *ToBeConverted)
 {
         Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
+        uint8_t status = 0;
+
         while (!proceeding)
         {
+                clearScreen();
                 printf("Choose The unit you want to convert to: ");
                 proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
@@ -514,19 +577,21 @@ void SpeedCoversion(Unit *ToBeConverted)
         {
         case MeterPerSec:
                 SpecificationUnit = *ToBeConverted;
-                ToMeterPerSec(&SpecificationUnit);
+                status = ToMeterPerSec(&SpecificationUnit);
                 break;
         case KMPerHr:
                 SpecificationUnit = *ToBeConverted;
-                ToKMPerHr(&SpecificationUnit);
+                status = ToKMPerHr(&SpecificationUnit);
                 break;
         case Milesperhour:
                 SpecificationUnit = *ToBeConverted;
-                ToMilesperhour(&SpecificationUnit);
+                status = ToMilesperhour(&SpecificationUnit);
                 break;
         default:
                 break;
         }
+        Handle_Conversion_Status(status);
+        clearScreen();
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
 }
@@ -534,9 +599,11 @@ void TempratureCoversion(Unit *ToBeConverted)
 {
         Unit SpecificationUnit = *ToBeConverted;
         uint8_t proceeding = 0;
+        uint8_t status = 0;
         Print_Unit(ToBeConverted);
         while (!proceeding)
         {
+                clearScreen();
                 printf("Choose The unit you want to convert to: ");
                 proceeding = ChooseUnitConverted(&SpecificationUnit);
         }
@@ -545,29 +612,25 @@ void TempratureCoversion(Unit *ToBeConverted)
         case Fahrenheit:
                 SpecificationUnit = *ToBeConverted;
 
-                ToFahrenheit(&SpecificationUnit);
+                status = ToFahrenheit(&SpecificationUnit);
 
-                SpecificationUnit.UnitType = Fahrenheit;
                 break;
         case Kelvin:
                 SpecificationUnit = *ToBeConverted;
 
-                ToKelvin(&SpecificationUnit);
-
-                SpecificationUnit.UnitType = Kelvin;
+                status = ToKelvin(&SpecificationUnit);
 
                 break;
         case Celsius:
                 SpecificationUnit = *ToBeConverted;
 
-                ToCelsius(&SpecificationUnit);
-
-                SpecificationUnit.UnitType = Celsius;
+                status = ToCelsius(&SpecificationUnit);
 
         default:
                 break;
         }
-
+        Handle_Conversion_Status(status);
+        clearScreen();
         Print_Unit(ToBeConverted);
         Print_Unit(&SpecificationUnit);
 }
@@ -616,7 +679,8 @@ void handleScanfproblems(uint8_t valid, uint8_t howManyInputs)
         else
         {
                 int garbage;
-                while (garbage = getchar() != '\n' && garbage != EOF);
+                while (garbage = getchar() != '\n' && garbage != EOF)
+                        ;
         }
         printf("\nThis is invalid Input please enter a number\n");
 }
