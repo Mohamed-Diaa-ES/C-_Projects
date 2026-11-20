@@ -13,9 +13,9 @@ typedef struct
 
 #define MAX_Specified 65535
 #define MIN_Specified 32768
-static uint64_t n = 0;
-static const uint64_t e = 65537;
-static uint64_t d = 0;
+uint64_t n = 0;
+const uint64_t e = 65537;
+uint64_t d = 0;
 
 uint8_t is_Prime(uint64_t n)
 {
@@ -65,7 +65,7 @@ Q_P Get_KeyGen_PrimePairs()
     return Resultant_Pair;
 }
 
-uint64_t Get_d_simple(uint64_t e_val, Q_P PrimePair)
+uint64_t Get_d(uint64_t e_val, Q_P PrimePair)
 {
     uint64_t phi_n = (PrimePair.p - 1) * (PrimePair.q - 1);
 
@@ -79,11 +79,40 @@ uint64_t Get_d_simple(uint64_t e_val, Q_P PrimePair)
     return 0;
 }
 
-void KeyGenAlgorithm()
+void KeyGenAlgorithm(const char *PrivateKeyFilePlaceAndName, const char *PublicKeyFilePlaceAndName)
 {
 
     srand(time(NULL));
 
-    FILE *PrivateKeyFileptr = fopen("Keys_Ciph_Plain_Files/Private_Key_File.txt", "W");
-    FILE *PublicKeyFileptr = fopen("Keys_Ciph_Plain_Files/Public_Key_File.txt", "W");
+    Q_P ResultPair = Get_KeyGen_PrimePairs();
+    n = ResultPair.p * ResultPair.q;
+    d = Get_d(e, ResultPair);
+
+    FILE *PrivateKeyFileptr = fopen(PrivateKeyFilePlaceAndName, "w");
+
+    if (PrivateKeyFileptr == NULL)
+    {
+        perror("Error opening private key file");
+        return;
+    }
+    fprintf(PrivateKeyFileptr, "%llu\n%llu\n", d, n);
+    fclose(PrivateKeyFileptr);
+
+    FILE *PublicKeyFileptr = fopen(PublicKeyFilePlaceAndName, "w");
+
+    if (PublicKeyFileptr == NULL)
+    {
+        perror("Error opening public key file");
+        return;
+    }
+
+    fprintf(PublicKeyFileptr, "%llu\n%llu\n", e, n);
+
+    fclose(PublicKeyFileptr);
+}
+
+
+int main(int argc, char **argv)
+{
+    KeyGenAlgorithm("../Keys_Ciph_Plain_Files/Private_Key_File.txt", "../Keys_Ciph_Plain_Files/Public_Key_File.txt");
 }
