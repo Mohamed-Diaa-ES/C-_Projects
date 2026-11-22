@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdint.h>
 #include "KeyGen/KeyGen.h"
+#include "Encrypt/Encrypt.h"
 
 int main(int argc, char **argv)
 {
