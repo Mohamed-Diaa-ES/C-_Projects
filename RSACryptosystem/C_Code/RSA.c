@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include "KeyGen/KeyGen.h"
 #include "Encrypt/Encrypt.h"
+#include "Decrypt/Decrypt.h"
 
 int main(int argc, char **argv)
 {
@@ -30,7 +31,7 @@ int main(int argc, char **argv)
             }
             else if (strcmp(argv[1], "decrypt") == 0)
             {
-                // DecryptionAlgorithm(argv[2], argv[3]);
+                DecryptionAlgorithm(argv[2]);
             }
             else
             {

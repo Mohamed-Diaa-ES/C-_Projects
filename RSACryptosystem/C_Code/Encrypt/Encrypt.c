@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "Encrypt.h"
 
-const char *EncryptedFilePath = "Results/Encrypted.hex";
+static const char *EncryptedFilePath = "Results/Encrypted.hex";
 
 uint32_t FastExponentiation(uint8_t m, uint64_t e, uint64_t n)
 {
