@@ -20,22 +20,24 @@ int main(int argc, char **argv)
     {
         if (strcmp(argv[1], "keygen") == 0)
         {
-            KeyGenAlgorithm(argv[2],argv[3]);
+            KeyGenAlgorithm(argv[2], argv[3]);
         }
         else if (argc == 5)
         {
             if (strcmp(argv[1], "encrypt") == 0)
             {
+                EncryptionAlgorithm(argv[2], argv[3]);
             }
             else if (strcmp(argv[1], "decrypt") == 0)
             {
+                // DecryptionAlgorithm(argv[2], argv[3]);
             }
             else
             {
-                printf("Input Command is not applicable");
+                printf("Input Command is not applicable You may Check Your lower case or the word it self.");
             }
         }
-        else 
+        else
         {
             goto Exit;
         }
