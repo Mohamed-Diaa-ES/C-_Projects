@@ -25,6 +25,5 @@ Q_P Get_KeyGen_PrimePairs();
 uint64_t Get_d(uint64_t e_val, Q_P PrimePair);
 #endif
 
-void KeyGenAlgorithm(const char *PrivateKeyFilePlaceAndName, const char *PublicKeyFilePlaceAndName);
-
+void KeyGenAlgorithm(const char *PublicKeyFilePlaceAndName, const char *PrivateKeyFilePlaceAndName);
 #endif

@@ -3,8 +3,6 @@
 #include <stdint.h>
 #include "Encrypt.h"
 
-static const char *EncryptedFilePath = "Results/Encrypted.hex";
-
 uint32_t FastExponentiation(uint8_t m, uint64_t e, uint64_t n)
 {
     if (n == 1)
@@ -25,7 +23,7 @@ uint32_t FastExponentiation(uint8_t m, uint64_t e, uint64_t n)
     return (uint32_t)result;
 }
 
-void EncryptionAlgorithm(const char *PublicKeyFilePath, const char *SecretFilePath)
+void EncryptionAlgorithm(const char *PublicKeyFilePath, const char *SecretFilePath, const char *EncryptedFilePath)
 {
     // reading the files
     FILE *PublicKeyFile_ptr = fopen(PublicKeyFilePath, "r");

@@ -62,7 +62,7 @@ uint64_t Get_d(uint64_t e_val, Q_P PrimePair)
 
     for (uint64_t k = 1; k < e_val; k++)
     {
-        if ((k * phi_n + 1) % e_val == 0)
+        if ((k * phi_n + 1) % e_val == 0) // taking advatage that e*d is (phi(n)*integer +1)
         {
             return (k * phi_n + 1) / e_val;
         }
@@ -70,13 +70,13 @@ uint64_t Get_d(uint64_t e_val, Q_P PrimePair)
     return 0;
 }
 
-void KeyGenAlgorithm(const char *PrivateKeyFilePlaceAndName, const char *PublicKeyFilePlaceAndName)
+void KeyGenAlgorithm(const char *PublicKeyFilePlaceAndName, const char *PrivateKeyFilePlaceAndName)
 {
 
     srand(time(NULL));
 
     Q_P ResultPair = Get_KeyGen_PrimePairs();
-    n = ResultPair.p * ResultPair.q;
+    n = (uint32_t)ResultPair.p * ResultPair.q;
     d = Get_d(e, ResultPair);
 
     FILE *PrivateKeyFileptr = fopen(PrivateKeyFilePlaceAndName, "w");
@@ -86,7 +86,7 @@ void KeyGenAlgorithm(const char *PrivateKeyFilePlaceAndName, const char *PublicK
         perror("Error opening private key file");
         return;
     }
-    fprintf(PrivateKeyFileptr, "%llu\n%llu\n", d, n);
+    fprintf(PrivateKeyFileptr, "%llu\n%llu\n", n, d);
     fclose(PrivateKeyFileptr);
 
     FILE *PublicKeyFileptr = fopen(PublicKeyFilePlaceAndName, "w");
@@ -97,7 +97,7 @@ void KeyGenAlgorithm(const char *PrivateKeyFilePlaceAndName, const char *PublicK
         return;
     }
 
-    fprintf(PublicKeyFileptr, "%llu\n%llu\n", e, n);
+    fprintf(PublicKeyFileptr, "%llu\n%llu\n", n, e);
 
     fclose(PublicKeyFileptr);
 }

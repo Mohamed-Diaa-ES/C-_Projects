@@ -3,8 +3,6 @@
 #include <stdint.h>
 #include "Decrypt.h"
 
-static const char *EncryptedFilePath = "Results/Encrypted.hex";
-const char *PlainTextFile = "Results/PlainText_Result.txt";
 uint32_t FastExponentiation_decrypt(uint64_t C, uint64_t e, uint64_t n)
 {
     if (n == 1)
@@ -25,7 +23,7 @@ uint32_t FastExponentiation_decrypt(uint64_t C, uint64_t e, uint64_t n)
     return (uint32_t)result;
 }
 
-void DecryptionAlgorithm(const char *PrivateKeyFilePath)
+void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *PlainTextFile, const char *EncryptedFilePath)
 {
     // reading the files
     FILE *PrivateKeyFile_ptr = fopen(PrivateKeyFilePath, "r");
@@ -91,4 +89,3 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath)
     fclose(EncryptedFile_ptr);
     fclose(PrivateKeyFile_ptr);
 }
-
