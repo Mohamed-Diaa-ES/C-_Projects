@@ -56,21 +56,21 @@ void EncryptionAlgorithm(const char *PublicKeyFilePath, const char *SecretFilePa
 
     if (fgets(buffer, sizeof(buffer), PublicKeyFile_ptr) != NULL)
     {
-        e = strtoull(buffer, NULL, 10);
-    }
-    else
-    {
-        printf("ERROR READING ( e ) IN THE PUBLIC KEY FILE!!");
-        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
-    }
-
-    if (fgets(buffer, sizeof(buffer), PublicKeyFile_ptr) != NULL)
-    {
         n = strtoull(buffer, NULL, 10);
     }
     else
     {
         printf("ERROR READING ( n ) IN THE PUBLIC KEY FILE!!");
+        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
+    }
+
+    if (fgets(buffer, sizeof(buffer), PublicKeyFile_ptr) != NULL)
+    {
+        e = strtoull(buffer, NULL, 10);
+    }
+    else
+    {
+        printf("ERROR READING ( e ) IN THE PUBLIC KEY FILE!!");
         printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
     }
     int ch;

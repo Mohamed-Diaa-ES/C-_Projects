@@ -1,3 +1,5 @@
-$ ./RSA_Test.exe decrypt Keys_Ciph_Plain_Files/Private_Key_File.txt Keys_Ciph_Plain_Files/Public_Key_File.txt  s
-$ ./RSA_Test.exe encrypt Keys_Ciph_Plain_Files/Public_Key_File.txt Keys_Ciph_Plain_Files/SecretText.txt s
-$ ./RSA_Test.exe keygen Keys_Ciph_Plain_Files/Public_Key_File.txt  Keys_Ciph_Plain_Files/Private_Key_File.txt  
+./rsa.exe decrypt Keys_Ciph_Plain_Files/Private_Key_File.txt  Results/Encrypted.hex Results/PlainText_Result.txt
+./rsa.exe encrypt Keys_Ciph_Plain_Files/Public_Key_File.txt Keys_Ciph_Plain_Files/SecretText.txt Results/Encrypted.hex
+./rsa.exe keygen Keys_Ciph_Plain_Files/Public_Key_File.txt  Keys_Ciph_Plain_Files/Private_Key_File.txt  
+
+gcc Decrypt/Decrypt.c Encrypt/Encrypt.c KeyGen/KeyGen.c RSA.c -o rsa.exe

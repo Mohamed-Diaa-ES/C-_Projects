@@ -23,7 +23,7 @@ uint32_t FastExponentiation_decrypt(uint64_t C, uint64_t e, uint64_t n)
     return (uint32_t)result;
 }
 
-void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *PlainTextFile, const char *EncryptedFilePath)
+void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *EncryptedFilePath, const char *PlainTextFile)
 {
     // reading the files
     FILE *PrivateKeyFile_ptr = fopen(PrivateKeyFilePath, "r");
@@ -56,21 +56,21 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *PlainTextFi
 
     if (fgets(buffer, sizeof(buffer), PrivateKeyFile_ptr) != NULL)
     {
-        d = strtoull(buffer, NULL, 10);
-    }
-    else
-    {
-        printf("ERROR READING ( d ) IN THE PUBLIC KEY FILE!!");
-        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
-    }
-
-    if (fgets(buffer, sizeof(buffer), PrivateKeyFile_ptr) != NULL)
-    {
         n = strtoull(buffer, NULL, 10);
     }
     else
     {
         printf("ERROR READING ( n ) IN THE PUBLIC KEY FILE!!");
+        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
+    }
+
+    if (fgets(buffer, sizeof(buffer), PrivateKeyFile_ptr) != NULL)
+    {
+        d = strtoull(buffer, NULL, 10);
+    }
+    else
+    {
+        printf("ERROR READING ( d ) IN THE PUBLIC KEY FILE!!");
         printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
     }
     uint32_t C = 0;
@@ -83,8 +83,7 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *PlainTextFi
         fputc(M, PlainTextFile_ptr);
     }
 
-    printf("n is:%llu\n", n);
-    printf("d is:%llu\n", d);
+
     fclose(PlainTextFile_ptr);
     fclose(EncryptedFile_ptr);
     fclose(PrivateKeyFile_ptr);

@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 
     if (argc < 4)
     {
-    Exit:
+    Exit: // by the way I meant to use the goto statement because I want to. :)
         printf("NotSuffcient Number Of Files and paramters!\n");
         printf("Must be in the Form of: \n");
         printf("./rsa.exe operation <output_public_key_file><output_private_key_file> \n");
@@ -27,11 +27,11 @@ int main(int argc, char **argv)
         {
             if (strcmp(argv[1], "encrypt") == 0)
             {
-                EncryptionAlgorithm(argv[2], argv[3]);
+                EncryptionAlgorithm(argv[2], argv[3],argv[4]);
             }
             else if (strcmp(argv[1], "decrypt") == 0)
             {
-                DecryptionAlgorithm(argv[2]);
+                DecryptionAlgorithm(argv[2], argv[3],argv[4]);
             }
             else
             {
