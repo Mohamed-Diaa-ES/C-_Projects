@@ -15,9 +15,9 @@ uint32_t FastExponentiation_decrypt(uint64_t C, uint64_t e, uint64_t n)
     {
         if (e % 2)
         {
-            result = (result * M_Mod_N) % n;
+            result = ((__uint128_t)result * M_Mod_N) % n;
         }
-        M_Mod_N = (M_Mod_N * M_Mod_N) % n;
+        M_Mod_N = ((__uint128_t)M_Mod_N * M_Mod_N) % n;
         e /= 2;
     }
     return (uint32_t)result;
@@ -82,7 +82,6 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *EncryptedFi
         M = FastExponentiation_decrypt(C, d, n);
         fputc(M, PlainTextFile_ptr);
     }
-
 
     fclose(PlainTextFile_ptr);
     fclose(EncryptedFile_ptr);
