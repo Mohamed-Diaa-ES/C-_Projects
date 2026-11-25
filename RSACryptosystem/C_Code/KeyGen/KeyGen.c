@@ -58,7 +58,7 @@ Q_P Get_KeyGen_PrimePairs()
 
 uint64_t Get_d(uint64_t e_val, Q_P PrimePair)
 {
-    uint64_t phi_n = (PrimePair.p - 1) * (PrimePair.q - 1);
+    uint64_t phi_n = (uint64_t)(PrimePair.p - 1) * (uint64_t)(PrimePair.q - 1);
 
     for (uint64_t k = 1; k < e_val; k++)
     {

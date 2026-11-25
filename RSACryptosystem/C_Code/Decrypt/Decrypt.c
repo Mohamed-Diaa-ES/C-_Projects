@@ -40,7 +40,7 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *EncryptedFi
         fclose(PrivateKeyFile_ptr);
         return;
     }
-    FILE *PlainTextFile_ptr = fopen(PlainTextFile, "w");
+    FILE *PlainTextFile_ptr = fopen(PlainTextFile, "wb");
     // checking the files are readble
     if (PlainTextFile_ptr == NULL)
     {
