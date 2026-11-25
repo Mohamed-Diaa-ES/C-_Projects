@@ -1,0 +1,3 @@
+gcc hack.c Brute/Brute.c MapValues/mapping_values.c -o hack.exe
+
+./hack.exe ../RSA_Code/Keys_Ciph_Plain_Files/Public_Key_File.txt ../RSA_Code/Results/Encrypted.hex
