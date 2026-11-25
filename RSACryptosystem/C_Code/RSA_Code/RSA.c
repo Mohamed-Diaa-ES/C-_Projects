@@ -11,7 +11,7 @@ int main(int argc, char **argv)
     if (argc < 4)
     {
     Exit: // by the way I meant to use the goto statement because I want to. :)
-        printf("NotSuffcient Number Of Files and paramters!\n");
+        printf("NotSuffcient Number Of Files and paramters Or wrong caseletter!\n");
         printf("Must be in the Form of: \n");
         printf("./rsa.exe operation <output_public_key_file> <secretFilePath> <output_private_key_file> \n");
         printf("Example: ./rsa encrypt public_key.txt secret_text.txt encrypted.txt \n");
