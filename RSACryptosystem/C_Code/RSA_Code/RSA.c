@@ -13,9 +13,9 @@ int main(int argc, char **argv)
     Exit: // by the way I meant to use the goto statement because I want to. :)
         printf("NotSuffcient Number Of Files and paramters!\n");
         printf("Must be in the Form of: \n");
-        printf("./rsa.exe operation <output_public_key_file><output_private_key_file> \n");
+        printf("./rsa.exe operation <output_public_key_file> <secretFilePath> <output_private_key_file> \n");
         printf("Example: ./rsa encrypt public_key.txt secret_text.txt encrypted.txt \n");
-        return 0;
+        return 1;
     }
     else
     {
@@ -43,4 +43,5 @@ int main(int argc, char **argv)
             goto Exit;
         }
     }
+    return 0;
 }

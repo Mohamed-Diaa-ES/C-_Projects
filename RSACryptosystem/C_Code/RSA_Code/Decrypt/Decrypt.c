@@ -15,7 +15,7 @@ uint32_t FastExponentiation_decrypt(uint64_t C, uint64_t e, uint64_t n)
     {
         if (e % 2)
         {
-            result = ((__uint128_t)result * M_Mod_N) % n;
+            result = ((__uint128_t)result * M_Mod_N) % n; // caused over flow of integers and some wierd problems os used this :)
         }
         M_Mod_N = ((__uint128_t)M_Mod_N * M_Mod_N) % n;
         e /= 2;
@@ -78,9 +78,17 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *EncryptedFi
 
     while (fscanf(EncryptedFile_ptr, "%8x", &C) == 1)
     {
-
-        M = FastExponentiation_decrypt(C, d, n);
-        fputc(M, PlainTextFile_ptr);
+        
+        uint32_t M = FastExponentiation_decrypt(C, d, n);
+        if (M >= 256)
+        {
+            fprintf(stderr, "Error: decrypted value %u out of byte range\n", M);
+            fclose(PlainTextFile_ptr);
+            fclose(EncryptedFile_ptr);
+            fclose(PrivateKeyFile_ptr);
+            exit(1);
+        }
+        fputc((uint8_t)M, PlainTextFile_ptr);
     }
 
     fclose(PlainTextFile_ptr);
