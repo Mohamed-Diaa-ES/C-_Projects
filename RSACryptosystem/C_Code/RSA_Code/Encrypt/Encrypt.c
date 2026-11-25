@@ -60,8 +60,8 @@ void EncryptionAlgorithm(const char *PublicKeyFilePath, const char *SecretFilePa
     }
     else
     {
-        printf("ERROR READING ( n ) IN THE PUBLIC KEY FILE!!");
-        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
+        perror("ERROR READING ( n ) IN THE PUBLIC KEY FILE!!");
+        perror("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
     }
 
     if (fgets(buffer, sizeof(buffer), PublicKeyFile_ptr) != NULL)
@@ -70,8 +70,8 @@ void EncryptionAlgorithm(const char *PublicKeyFilePath, const char *SecretFilePa
     }
     else
     {
-        printf("ERROR READING ( e ) IN THE PUBLIC KEY FILE!!");
-        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
+        perror("ERROR READING ( e ) IN THE PUBLIC KEY FILE!!");
+        perror("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
     }
     int ch;
     uint32_t C = 0;

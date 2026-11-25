@@ -60,8 +60,8 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *EncryptedFi
     }
     else
     {
-        printf("ERROR READING ( n ) IN THE PUBLIC KEY FILE!!");
-        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
+        perror("ERROR READING ( n ) IN THE Private KEY FILE!!");
+        perror("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
     }
 
     if (fgets(buffer, sizeof(buffer), PrivateKeyFile_ptr) != NULL)
@@ -70,8 +70,8 @@ void DecryptionAlgorithm(const char *PrivateKeyFilePath, const char *EncryptedFi
     }
     else
     {
-        printf("ERROR READING ( d ) IN THE PUBLIC KEY FILE!!");
-        printf("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
+        perror("ERROR READING ( d ) IN THE Private KEY FILE!!");
+        perror("\nFILE MAY BE EMPTY! GENERATE THE NUMBERS FIRST!\n");
     }
     uint32_t C = 0;
     uint8_t M = 0;
